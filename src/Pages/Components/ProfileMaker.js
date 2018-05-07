@@ -94,8 +94,6 @@ class ProfileMaker extends Component {
           this.profileWarning("Veuillez entrer votre nom complet.");
         else if (this.location === undefined)
           this.profileWarning("Veuillez indiquer votre localisation.");
-        else if (document.getElementById("avatar-form").files.length === 0)
-          this.profileWarning("Veuillez insérer une image de profil valide.");
         else if (this.areaList.length < 1)
           this.profileWarning("Veuillez indiquer au moins une zone d'intervention.");
         else if (document.getElementById("public-email-form").value !== "" && !validateEmail(document.getElementById("public-email-form").value))
@@ -132,11 +130,11 @@ class ProfileMaker extends Component {
               displayName: document.getElementById("fullname-form").value,
               password: document.getElementById("password-form").value
             }, "signup", data => {
-              this.props.api.uploadFile(document.getElementById("avatar-form").files[0], data => {
 
+              let validateProfile = avatar => {
                 this.props.api.submitProfile({
 
-                  avatar: this.props.api.baseURL + "/assets/" + data[0]._id,
+                  avatar: avatar,
                   fullname: document.getElementById("fullname-form").value,
                   email: document.getElementById("email-form").value,
                   tags: this.tags.map(e => e.id),
@@ -153,10 +151,15 @@ class ProfileMaker extends Component {
                   this.profileWarning("Vous avez été déconnecté.");
                   setTimeout(this.props.onCreateProfile, 3000);
                 })
-              }, data => {
+              }
 
-                this.profileWarning("Le téléchargement de votre image de profil a échoué.");
-              })
+              if (document.getElementById("avatar-form").files.length === 0)
+                validateProfile("/placeholder");
+              else
+                this.props.api.uploadFile(document.getElementById("avatar-form").files[0], data => validateProfile(this.props.api.baseURL + "/assets/" + data[0]._id), data => {
+
+                  this.profileWarning("Le téléchargement de votre image de profil a échoué.");
+                })
             }, data => {
 
               this.profileWarning("Cette adresse email a déjà été enregistrée.");

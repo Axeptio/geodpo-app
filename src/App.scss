@@ -46,7 +46,7 @@ body {
 }
 
 .navbar {
-	height: 3em;
+	height: 4em;
 	background-color: white;
 	justify-content: left;
 	line-height: 3em;
@@ -111,7 +111,7 @@ main {
 #header-links {
 
 	position: absolute;
-	right: 20px;
+	right: 40px;
 
 	a, .header-link {
 		display: inline-block;
@@ -183,11 +183,12 @@ h1, h2, p {
 }
 
 #profile-menu {
+	
 	overflow: scroll;
   position: fixed;
   left: 0;
   top: 0;
-  margin-top: 3em;
+  margin-top: 4em;
   padding-bottom: 6em;
   min-width: 30em;
   width: 50%;
@@ -369,12 +370,16 @@ img.pin {
 
 	.header-input { padding: 0.25em 1em }
 
-	.header-input, .algolia-places { margin: 0 0.4em }
+	.header-input, .algolia-places {
+
+		margin: 0 0.4em;
+		font-size: 0.8em;
+	}
 
 	.algolia-places {
 
-		height: 1.35em;
-		width: 10em;
+		height: 2.68em;
+		width: 17em;
 
 		.ap-input {
 
@@ -388,7 +393,7 @@ img.pin {
 
 			svg {
 
-				height: 0.8em;
+				//height: 0.8em;
 				width: 0.8em;
 			}
 		}
@@ -400,7 +405,7 @@ img.pin {
 				height: 30px;
 				line-height: 30px;
 				padding-left: 8px;
-				font-size: 0.6em;
+				font-size: 0.8em;
 			}
 
 			.ap-suggestion-icon {
@@ -422,13 +427,12 @@ img.pin {
 
 	input {
 
-	  font-size: 0.6em;
 	  box-shadow: 0;
 	  border-radius: 1px;
 
 	  &[type="text"] {
 
-			line-height: 1.5em;
+			line-height: 2em;
 			width: 17em;
 	  		border: 1px solid #ced4da;
 			transition: box-shadow 0.2s;
@@ -451,10 +455,11 @@ img.pin {
 
 		&[type="submit"] {
   
-			line-height: 3em;
+			line-height: 2em;
 			width: 5em;
 			text-align: center;
 			font-weight: bold;
+			border: 1px solid $primary !important;
 			background-color: $primary;
 			color: white;
 			cursor: pointer;
@@ -659,7 +664,6 @@ ul {
 .avatar {
   height: 4em;
   width: 4em;
-  border: solid $secondary 1px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -1145,6 +1149,12 @@ ul {
 		    	outline: 0 !important;
 		    }
     	}
+    }
+
+    .tri-box .avatar {
+
+    	float: none;
+    	margin: auto;
     }
 
     .short-profile {

@@ -14,7 +14,7 @@ class MapPage extends Component {
 	hidden = true;
   profile = <ProfileMaker/>;
 
-	constructor (props) {console.log("bonjour")
+	constructor (props) {
 
 		super(props)
     this.validateSearch = this.validateSearch.bind(this);
