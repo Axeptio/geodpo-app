@@ -1,0 +1,9 @@
+{ "suggestions" : [
+	{ "id": "Web", "text": "Web" },
+	{ "id": "Health", "text": "Health" },
+	{ "id": "IT", "text": "IT" },
+	{ "id": "Agriculture", "text": "Agriculture" },
+	{ "id": "Education", "text": "Education" },
+	{ "id": "Engineering", "text": "Engineering" },
+	{ "id": "Environment", "text": "Environment" }
+]}
