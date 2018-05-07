@@ -23,11 +23,12 @@ class Map extends Component {
   }
 
   getState () {
-
-    this.setState({lat: this.refs.map.leafletElement.getCenter().lat});
-    this.setState({lng: this.refs.map.leafletElement.getCenter().lng});
-    this.setState({zoom: this.refs.map.leafletElement.getZoom()});
-    return this.state;
+    
+    return {
+      lat: this.refs.map.leafletElement.getCenter().lat,
+      lng: this.refs.map.leafletElement.getCenter().lng,
+      zoom: this.refs.map.leafletElement.getZoom()
+    };
   }
 
   /*shouldComponentUpdate(nextProps, nextState){
