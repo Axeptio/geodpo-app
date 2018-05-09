@@ -7509,6 +7509,7 @@ ul {
     width: 100%;
     margin: 0;
     padding: 0;
+    padding-top: 10px;
     min-width: none;
     max-width: none; }
     #profile-menu.hidden {

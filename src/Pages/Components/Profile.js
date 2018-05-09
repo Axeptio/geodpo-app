@@ -212,7 +212,7 @@ class Profile extends Component {
       				</div>
 	      		</div>
                         <div className="profile-box content-box">
-                              <h2>Offers</h2>
+                              <h2>Offres</h2>
                               <div className="offer-list">
                               { this.props.profile.offers.map(offer =>
                                     <span key={"offer-" + offer}>
