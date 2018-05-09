@@ -87,7 +87,7 @@ main {
 		width: 100%;
 		padding: .375rem .75rem;
 		border-radius: 2em;
-		font-size: 1em;
+		//font-size: 1em;
 		transition: all 0.3s;
 
 		&:hover {
@@ -118,7 +118,7 @@ main {
 		height: 100%;
 		width: 6em;
 		line-height: 4em;
-		font-size: 0.7em;
+		//font-size: 0.7em;
 		text-align: center;
 		text-decoration: none;
 		color: inherit;
@@ -138,7 +138,7 @@ main {
 
 			display: inline-block;
 			color: $primary;
-			font-size: 0.7em;
+			//font-size: 0.7em;
   		line-height: 1.5em;
   		max-width: 18em;
   		text-align: right;
@@ -157,7 +157,7 @@ main {
 	width: 100%;
 	max-width: 45em;
 	padding: 30px;
-	font-size: 1.5em;
+	//font-size: 1.5em;
 	box-sizing: border-box;
 	margin: auto;
 }
@@ -405,7 +405,7 @@ img.pin {
 				height: 30px;
 				line-height: 30px;
 				padding-left: 8px;
-				font-size: 0.8em;
+				//font-size: 0.8em;
 			}
 
 			.ap-suggestion-icon {
@@ -416,7 +416,7 @@ img.pin {
 
 		.ap-footer {
 
-			font-size: 8px;
+			//font-size: 8px;
 
 			.ap-footer-algolia svg {
 
@@ -470,7 +470,7 @@ img.pin {
 
 .contact-button, .profile-box input[type="submit"] {
   padding: 0.8em 1.2em;
-  font-size: 0.7em;
+  //font-size: 0.7em;
   vertical-align: middle;
   background-color: $secondary;
   color: white;
@@ -493,7 +493,7 @@ img.pin {
 
 	.contact-button {
 
-		font-size: 1em;
+		//font-size: 1em;
 		margin: 0.5em auto;
 		background-color: $dark;
 		transition: border-radius 0.4s;
@@ -512,7 +512,7 @@ h2 {
 }
 
 p {
-  font-size: 0.7em;
+  //font-size: 0.7em;
 }
 
 .tag-list {
@@ -530,7 +530,7 @@ p {
 
 	&:not(label), * {
 
-	  font-size: 0.65em;
+	  //font-size: 0.65em;
 	  background-color: $profile-bg;
 	  padding: 0.18em 0.45em;
 	  margin: 0.1em 0.3em;
@@ -557,7 +557,7 @@ p {
 	&:not(label), * {
 
 		line-height: 2em;
-		font-size: 0.8em;
+		//font-size: 0.8em;
 		color: white;
 		display: inline-block;
 		border-bottom-left-radius: 4px;
@@ -612,6 +612,8 @@ ul {
   flex-wrap: wrap;
 }
 
+.ReactTags__tags { margin: -0.2em -0.3em }
+
 .ReactTags__tag {
 
   background-color: $primary;
@@ -629,10 +631,11 @@ ul {
 
 .ReactTags__tagInputField {
 
+    padding: 0.14em 0.5em;
+    margin: 0.18em 0.3em;
 	width: inherit;
 	display: inline-block;
-  padding: 0.375rem 0.75rem;
-  font-size: 0.9rem;
+  //font-size: 0.9rem;
   line-height: 1.5;
   color: #495057;
   background-color: #fff;
@@ -671,7 +674,6 @@ ul {
 .full-name {
   max-width: 100%;
   overflow: hidden;
-  white-space: nowrap;
 }
 
 .fname {
@@ -778,7 +780,7 @@ ul {
 		box-shadow: 2px 2px 3px 0px #0008;
 		color: white;
 		font-weight: bold;
-		font-size: 1.4em;
+		//font-size: 1.4em;
 		line-height: 1.8em;
 		text-align: center;
 		background: radial-gradient($secondary, $dark);
@@ -835,7 +837,7 @@ ul {
     margin: 0.5em;
     padding: 0.5em;
     text-align: center;
-    font-size: 0.8em;
+    //font-size: 0.8em;
     border-radius: 3px;
     max-height: 18em;
     overflow: hidden;
@@ -867,7 +869,7 @@ ul {
     margin-bottom: 5px;
     padding-top: 3px;
     cursor: pointer;
-    font-size: 16px;
+    //font-size: 16px;
     color: #6b7177;
 }
     .control input {
@@ -969,11 +971,12 @@ ul {
 
 	.contact-info {
 
-		font-size: 0.85em;
+		//font-size: 0.85em;
 		height: 3em;
 		line-height: 3em;
 		color: $secondary;
 		text-align: left;
+		white-space: nowrap;
 
 		* { vertical-align: middle }
 
@@ -989,6 +992,14 @@ ul {
 			color: $secondary;
 
 			&:hover { color: $dark }
+		}
+
+		.contact-text {
+
+			overflow: hidden;
+		    text-overflow: ellipsis;
+		    max-width: 80%;
+		    display: inline-block;
 		}
 	}
 
@@ -1078,7 +1089,7 @@ ul {
 
     	input[type="text"], .algolia-places .ap-input {
 
-    		font-size: 0.8em;
+    		//font-size: 0.8em;
     	}
 
     	input[type="text"] { line-height: 2em }
@@ -1184,6 +1195,11 @@ ul {
 	font-weight: bold;
 }
 
+.offer-list {
+
+	margin: 0 -0.7em;
+}
+
 .add-button {
 
 	box-sizing: content-box;
@@ -1218,7 +1234,7 @@ ul {
 	    height: 1.5em;
 	    line-height: 1.5;
 	    color: $primary;
-	    font-size: 0.85em;
+	    //font-size: 0.85em;
 	    display: inline-block;
 	    transition: color 0.2s;
     }

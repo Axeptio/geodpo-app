@@ -6785,7 +6785,6 @@ main {
     width: 100%;
     padding: .375rem .75rem;
     border-radius: 2em;
-    font-size: 1em;
     transition: all 0.3s; }
     .confirm-box button:hover {
       background-color: #96c02d;
@@ -6806,7 +6805,6 @@ main {
     height: 100%;
     width: 6em;
     line-height: 4em;
-    font-size: 0.7em;
     text-align: center;
     text-decoration: none;
     color: inherit;
@@ -6820,7 +6818,6 @@ main {
   #header-links .help-link {
     display: inline-block;
     color: #96c02d;
-    font-size: 0.7em;
     line-height: 1.5em;
     max-width: 18em;
     text-align: right; }
@@ -6833,7 +6830,6 @@ main {
   width: 100%;
   max-width: 45em;
   padding: 30px;
-  font-size: 1.5em;
   box-sizing: border-box;
   margin: auto; }
 
@@ -7007,14 +7003,11 @@ img.pin {
   #map-search-form .algolia-places .ap-suggestions .ap-suggestion {
     height: 30px;
     line-height: 30px;
-    padding-left: 8px;
-    font-size: 0.8em; }
+    padding-left: 8px; }
   #map-search-form .algolia-places .ap-suggestions .ap-suggestion-icon {
     display: none; }
-  #map-search-form .algolia-places .ap-footer {
-    font-size: 8px; }
-    #map-search-form .algolia-places .ap-footer .ap-footer-algolia svg {
-      height: 8px; }
+  #map-search-form .algolia-places .ap-footer .ap-footer-algolia svg {
+    height: 8px; }
 #map-search-form input {
   box-shadow: 0;
   border-radius: 1px; }
@@ -7048,7 +7041,6 @@ img.pin {
 
 .contact-button, .profile-box input[type="submit"] {
   padding: 0.8em 1.2em;
-  font-size: 0.7em;
   vertical-align: middle;
   background-color: #34527b;
   color: white;
@@ -7065,7 +7057,6 @@ img.pin {
 #edit-box form {
   text-align: center; }
   #edit-box form .contact-button {
-    font-size: 1em;
     margin: 0.5em auto;
     background-color: #162233;
     transition: border-radius 0.4s; }
@@ -7080,9 +7071,6 @@ h2 {
   margin-bottom: 0.4em;
   font-size: 1.2em; }
 
-p {
-  font-size: 0.7em; }
-
 .tag-list {
   display: flex;
   flex-wrap: wrap; }
@@ -7092,7 +7080,6 @@ p {
   padding: 0 1em; }
 
 .tag:not(label), .tag * {
-  font-size: 0.65em;
   background-color: #f2f4f7;
   padding: 0.18em 0.45em;
   margin: 0.1em 0.3em;
@@ -7111,7 +7098,6 @@ p {
   height: 2em; }
   .upper-tag:not(label), .upper-tag * {
     line-height: 2em;
-    font-size: 0.8em;
     color: white;
     display: inline-block;
     border-bottom-left-radius: 4px;
@@ -7154,6 +7140,9 @@ ul {
   align-items: flex-start;
   flex-wrap: wrap; }
 
+.ReactTags__tags {
+  margin: -0.2em -0.3em; }
+
 .ReactTags__tag {
   background-color: #96c02d;
   padding: 0.18em 0.45em;
@@ -7166,10 +7155,10 @@ ul {
   display: inline-block; }
 
 .ReactTags__tagInputField {
+  padding: 0.14em 0.5em;
+  margin: 0.18em 0.3em;
   width: inherit;
   display: inline-block;
-  padding: 0.375rem 0.75rem;
-  font-size: 0.9rem;
   line-height: 1.5;
   color: #495057;
   background-color: #fff;
@@ -7200,8 +7189,7 @@ ul {
 
 .full-name {
   max-width: 100%;
-  overflow: hidden;
-  white-space: nowrap; }
+  overflow: hidden; }
 
 .fname {
   text-transform: capitalize; }
@@ -7272,7 +7260,6 @@ ul {
     box-shadow: 2px 2px 3px 0px #0008;
     color: white;
     font-weight: bold;
-    font-size: 1.4em;
     line-height: 1.8em;
     text-align: center;
     background: radial-gradient(#34527b, #162233); }
@@ -7314,7 +7301,6 @@ ul {
   margin: 0.5em;
   padding: 0.5em;
   text-align: center;
-  font-size: 0.8em;
   border-radius: 3px;
   max-height: 18em;
   overflow: hidden;
@@ -7340,7 +7326,6 @@ ul {
   margin-bottom: 5px;
   padding-top: 3px;
   cursor: pointer;
-  font-size: 16px;
   color: #6b7177; }
 
 .control input {
@@ -7425,11 +7410,11 @@ ul {
   overflow: hidden;
   padding-left: 3em; }
   #contact-data .contact-info {
-    font-size: 0.85em;
     height: 3em;
     line-height: 3em;
     color: #34527b;
-    text-align: left; }
+    text-align: left;
+    white-space: nowrap; }
     #contact-data .contact-info * {
       vertical-align: middle; }
     #contact-data .contact-info svg.contact-icon {
@@ -7440,6 +7425,11 @@ ul {
       color: #34527b; }
       #contact-data .contact-info a:hover {
         color: #162233; }
+    #contact-data .contact-info .contact-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 80%;
+      display: inline-block; }
 
 .handheld-extender {
   display: none; }
@@ -7493,8 +7483,6 @@ ul {
     #map-search-form input[type="text"], #map-search-form .algolia-places {
       margin: 0.5em auto;
       width: 80%; }
-    #map-search-form input[type="text"], #map-search-form .algolia-places .ap-input {
-      font-size: 0.8em; }
     #map-search-form input[type="text"] {
       line-height: 2em; }
     #map-search-form .algolia-places {
@@ -7561,6 +7549,9 @@ ul {
   text-align: center;
   font-weight: bold; }
 
+.offer-list {
+  margin: 0 -0.7em; }
+
 .add-button {
   box-sizing: content-box;
   height: 2em;
@@ -7586,7 +7577,6 @@ ul {
     height: 1.5em;
     line-height: 1.5;
     color: #96c02d;
-    font-size: 0.85em;
     display: inline-block;
     transition: color 0.2s; }
   .add-button:hover {

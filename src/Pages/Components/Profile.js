@@ -116,7 +116,9 @@ class Profile extends Component {
                                                             <svg className="contact-icon" version="1.1" viewBox="0 0 1691 1407">
                                                                   <g id="packet"><path d="M1691,165.177C1691,73.952,1617.048,0,1525.823,0H165.177C73.952,0,0,73.952,0,165.177v1076.646   C0,1333.048,73.952,1407,165.177,1407h1360.646c91.225,0,165.177-73.952,165.177-165.177V165.177z M166.062,132h1361.057   c18.216,0,32.881,14.528,32.881,32.746v1.433L869.916,856.337c-8.417,8.417-18.208,9.675-23.318,9.675   c-5.11,0-14.934-1.258-23.353-9.675L133,166.085v-1.339C133,146.528,147.846,132,166.062,132z M1527.119,1275H166.062   c-18.216,0-33.062-15.084-33.062-33.301V352.961l596.826,596.816c31.198,31.197,72.684,48.376,116.803,48.376   c44.125-0.003,85.528-17.186,116.724-48.382L1560,353.054v888.645C1560,1259.916,1545.335,1275,1527.119,1275z"/></g><g id="Layer_1"/>
                                                             </svg>
-                                                            {this.props.profile.publicEmail}
+                                                            <span className="contact-text">
+                                                                  {this.props.profile.publicEmail}
+                                                            </span>
                                                       </div> :
                                                       <div/>
                                           }
@@ -136,7 +138,9 @@ class Profile extends Component {
                                                                         C285.605,2.887,220.509-2.988,188.147,1.677c0,0-8.527,1.136-13.777,6.385c-8.16,8.16-8.656,21.978,0.061,30.695
                                                                         c7.746,7.746,19.604,5.773,19.604,5.773C231.484,38.879,277.696,56.24,318.415,96.958z"/></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g>
                                                             </svg>
-                                                            {this.props.profile.tel}
+                                                            <span className="contact-text">
+                                                                  {this.props.profile.tel}
+                                                            </span>
                                                       </div> :
                                                       <div/>
                                           } 
@@ -166,7 +170,9 @@ class Profile extends Component {
                                                                    M58.961,471.659H0c3.978-71.141,23.631-140.875,54.984-204.257h170.449c-26.088,66.088-40.594,134.408-44.689,204.257h-70.777
                                                                    M109.967,524.34h70.777c2.808,68.557,15.793,135.703,39.307,198.967H51.123C20.941,661.454,3.978,594.307,0,524.34h58.961"/>
                                                             </svg>
-                                                            <a href={this.props.profile.website} target="_blank">{this.props.profile.website}</a>
+                                                            <span className="contact-text">
+                                                                  <a href={this.props.profile.website} target="_blank">{this.props.profile.website}</a>
+                                                            </span>
                                                       </div> :
                                                       <div/>
                                           } 
@@ -194,7 +200,9 @@ class Profile extends Component {
                                                                         l17.14-223.139h52.313l15.002,223.139h35.196v65.653h18.446V351.03z M149.375,301.975H77.461v66.387h71.914V301.975z
                                                                          M273.293,301.975h-71.916v66.387h71.916V301.975z M398.768,301.975h-71.914v66.387h71.914V301.975z"/></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g>
                                                             </svg>
-                                                            {this.props.profile.company}
+                                                            <span className="contact-text">
+                                                                  {this.props.profile.company}
+                                                            </span>
                                                       </div> :
                                                       <div/>
                                           }
@@ -205,6 +213,7 @@ class Profile extends Component {
 	      		</div>
                         <div className="profile-box content-box">
                               <h2>Offers</h2>
+                              <div className="offer-list">
                               { this.props.profile.offers.map(offer =>
                                     <span key={"offer-" + offer}>
                                           <Badge id={"offer-" + offer}>
@@ -215,6 +224,7 @@ class Profile extends Component {
                                           </Tooltip>
                                     </span>
                               )}
+                              </div>
                         </div>
                         {
                         this.props.profile.resume === "" || this.props.profile.resume === undefined ? <div/> :
