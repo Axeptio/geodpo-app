@@ -212,7 +212,7 @@ class EditProfile extends Component {
       render() {
 
             return (
-                  <Form>
+                  <Form action="javascript:()=>{};" onSubmit={() => this.eraseProfile()}>
                         <div className="profile-box">
                               <div className="content-box">
                                     <div className="tri-box">
@@ -305,7 +305,7 @@ class EditProfile extends Component {
                               <div id="signedup-box" className="ext-box hidden-box"></div>
                             </div>
                             <div className="content-box contact-box">
-                              <button type="button" className="contact-button warning-button" onClick={() => this.eraseProfile()}>Supprimer le profil</button>
+                              <button type="submit" className="contact-button warning-button">Supprimer le profil</button>
                               <div id="erased-box" className="ext-box warning hidden-box"><b>En êtes-vous certain ?</b><br/>(Cliquez une seconde fois pour valider)</div>
                             </div>
                         </div>

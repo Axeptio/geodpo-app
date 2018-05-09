@@ -164,10 +164,10 @@ class MapPage extends Component {
             <g><g id="expand-more"><polygon points="270.3,58.65 153,175.95 35.7,58.65 0,94.35 153,247.35 306,94.35            "/></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g>
             </svg>
           </span>
-      		<form id="map-search-form" action="javascript:myFunction();">
+      		<form id="map-search-form" action="javascript:()=>{};" onSubmit={this.validateSearch}>
       			<input id="industry-search-form" className="header-input" type="text" placeholder="Secteur d'activité" name="tag"/>
       			<Place id="city-search-form" onChange={this.selectCity.bind(this)} onClear={this.removeCity.bind(this)} name="city"/>
-      			<input className="header-input" onClick={this.validateSearch} type="submit" name="confirm" value="Ok"/>
+      			<input className="header-input" type="submit" name="confirm" value="Ok"/>
       		</form>
       		<div id="header-links">
             <div className="add-button" onClick={() => this.handleCreateProfile()}>

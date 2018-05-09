@@ -6791,15 +6791,15 @@ main {
       border-color: #96c02d; }
 
 #img-logo {
-  height: 1.5em;
-  margin-right: 2em; }
+  height: 2.5em;
+  margin-right: 1em; }
 
 #title-img {
   width: 30em; }
 
 #header-links {
   position: absolute;
-  right: 40px; }
+  right: 20px; }
   #header-links a, #header-links .header-link {
     display: inline-block;
     height: 100%;
@@ -6856,8 +6856,9 @@ h1, h2, p {
   top: 0;
   margin-top: 4em;
   padding-bottom: 6em;
-  min-width: 30em;
+  min-width: 600px;
   width: 50%;
+  max-width: 800px;
   height: 100%;
   background-color: #f2f4f7;
   z-index: 10;
@@ -6877,7 +6878,7 @@ h1, h2, p {
 .short-profile {
   display: inline-block;
   margin: 1.66%;
-  height: 14em;
+  height: 16em;
   width: 30%;
   box-shadow: 0px 0px 4px 0px #8887;
   text-align: center;
@@ -6893,7 +6894,7 @@ h1, h2, p {
     font-size: 0.95em; }
   .short-profile .tag-list {
     justify-content: center;
-    max-height: 4em;
+    max-height: 5em;
     overflow: hidden; }
   .short-profile .more-info {
     position: absolute;
@@ -6919,7 +6920,7 @@ h1, h2, p {
   margin: auto;
   margin-top: 1em;
   width: 90%;
-  max-width: 25em; }
+  max-width: 600px; }
   .profile-box * {
     text-align: left; }
 
@@ -7032,9 +7033,8 @@ img.pin {
     line-height: 2em;
     width: 5em;
     text-align: center;
-    font-weight: bold;
-    border: 1px solid #96c02d !important;
-    background-color: #96c02d;
+    border: 1px solid #34527b !important;
+    background-color: #34527b;
     color: white;
     cursor: pointer;
     border: none; }
@@ -7074,6 +7074,8 @@ h2 {
 .tag-list {
   display: flex;
   flex-wrap: wrap; }
+  .tag-list.profile-tag-list {
+    margin: -0.3em -0.3em; }
 
 .upper-tag-list {
   margin-bottom: 1em;
@@ -7082,7 +7084,7 @@ h2 {
 .tag:not(label), .tag * {
   background-color: #f2f4f7;
   padding: 0.18em 0.45em;
-  margin: 0.1em 0.3em;
+  margin: 0.3em 0.3em;
   border-radius: 3px; }
 .tag input ~ *, .tag.ok-tag {
   cursor: pointer; }
@@ -7434,7 +7436,7 @@ ul {
 .handheld-extender {
   display: none; }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1150px) {
   .navbar {
     justify-content: space-around;
     padding: 0;
@@ -7485,8 +7487,6 @@ ul {
       width: 80%; }
     #map-search-form input[type="text"] {
       line-height: 2em; }
-    #map-search-form .algolia-places {
-      height: 2.2em; }
     #map-search-form input[type="submit"] {
       margin: 0.5em auto;
       width: 60%; }
@@ -7505,7 +7505,8 @@ ul {
     width: 100%;
     margin: 0;
     padding: 0;
-    min-width: unset; }
+    min-width: none;
+    max-width: none; }
     #profile-menu.hidden {
       left: unset;
       bottom: -40%; }

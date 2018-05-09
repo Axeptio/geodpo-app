@@ -197,7 +197,7 @@ class ProfileMaker extends Component {
       render() {
 
             return (
-                  <Form>
+                  <Form action="javascript:()=>{};" onSubmit={() => this.confirmInscription()}>
                         <div className="profile-box">
                               <div className="content-box">
                                     <div className="tri-box">
@@ -291,7 +291,7 @@ class ProfileMaker extends Component {
                                 <Input type="password" name="password" id="password-form" placeholder="Mot de passe"/>
                             </div>
                             <div className="content-box contact-box">
-                              <button type="button" className="contact-button" onClick={() => this.confirmInscription()}>Confirmer l'inscription</button>
+                              <button type="submit" className="contact-button">Confirmer l'inscription</button>
                               <div id="signedup-box" className="ext-box hidden-box"></div>
                             </div>
                         </div>
