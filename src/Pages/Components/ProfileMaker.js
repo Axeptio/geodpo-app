@@ -198,7 +198,7 @@ class ProfileMaker extends Component {
 
             return (
                   <Form action="javascript:()=>{};" onSubmit={() => this.confirmInscription()}>
-                        <div className="profile-box">
+                        <div id="profile-maker" className="profile-box">
                               <div className="content-box">
                                     <div className="tri-box">
                                     </div>

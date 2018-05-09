@@ -7436,6 +7436,10 @@ ul {
 .handheld-extender {
   display: none; }
 
+#profile-maker .avatar {
+  float: none;
+  margin: auto; }
+
 @media only screen and (max-width: 1150px) {
   .navbar {
     justify-content: space-around;
