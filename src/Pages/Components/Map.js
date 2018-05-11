@@ -55,7 +55,7 @@ class Map extends Component {
     this.props.onProfileClick(profile);
   }
 
-  focusSearch (industry, latlng) {
+  focusSearch (tag) {
 
     function haversineDistance(coords1, coords2) {
 
@@ -82,15 +82,17 @@ class Map extends Component {
       return d;
     }
 
-    var search = [], search2 = [];
-    let acceptRange = 40;
-    if (industry !== undefined) {
-      this.state.profiles.forEach(p => {
-        if (p.tags.map(tag => tag.toLowerCase()).includes(industry.toLowerCase()) || p.resume.toLowerCase().includes(industry.toLowerCase()))
-          search.push(p);
-      })
-    } else search = this.state.profiles.slice();
-    if (latlng !== undefined) {
+    
+    //let acceptRange = 40;
+    var search = this.state.profiles.filter(p =>
+      p.tags.map(tag => tag.toLowerCase()).includes(tag.toLowerCase()) ||
+      p.resume.toLowerCase().includes(tag.toLowerCase())
+    );
+    
+    let bounds = this.refs.map.leafletElement.getBounds();
+    search = search.filter(p => p.location.latlng.lat < bounds._northEast.lat && p.location.latlng.lat > bounds._southWest.lat
+      && p.location.latlng.lng < bounds._northEast.lng && p.location.latlng.lng > bounds._southWest.lng)
+    /*if (latlng !== undefined) {
       let itf = p => {
           if (haversineDistance(latlng, p.location.latlng) < acceptRange)
             search2.push(p);
@@ -100,9 +102,9 @@ class Map extends Component {
         search.forEach(itf);
         acceptRange += 20;
       } while (acceptRange < 200 && search2.length < 6);
-    } else search2 = search.slice();
+    } else*/
 
-    this.props.onClusterClick(search2);
+    this.props.onClusterClick(search);
   }
 
   initProfiles(profiles) {

@@ -63,6 +63,31 @@ class App extends Component {
 			);
 		}
 
+		function searchMap ({match, history}) { 
+
+			return (
+				<MapPage position={getPosition(match)}
+					options={this.props.options}
+					profiles={this.state.profiles}
+					missions={this.state.missions}
+					history={history}
+					mode="search"
+					tag={match.params.tag}/>
+			);
+		}
+
+		function seekMap ({match, history}) { 
+
+			return (
+				<MapPage position={getPosition(match)}
+					options={this.props.options}
+					profiles={this.state.profiles}
+					missions={this.state.missions}
+					history={history}
+					mode="seek"/>
+			);
+		}
+
 		function profileMap ({match, history}) { 
 
 			return (
@@ -95,6 +120,8 @@ class App extends Component {
 					<Route exact path="/:lat?/:lng?/:zoom?" component={vanillaMap.bind(this)}/>
 					<Route path="/signup/:lat?/:lng?/:zoom?" component={signupMap.bind(this)}/>
 					<Route path="/list/:ids/:lat?/:lng?/:zoom?" component={listMap.bind(this)}/>
+					<Route path="/search/:tag/:lat?/:lng?/:zoom?" component={searchMap.bind(this)}/>
+					<Route path="/seek/:lat?/:lng?/:zoom?" component={seekMap.bind(this)}/>
 					<Route path="/profile/:id/:lat?/:lng?/:zoom?" component={profileMap.bind(this)}/> 
 					<Route path="/edit/:id/:lat?/:lng?/:zoom?" component={editMap.bind(this)}/> 
 				</Switch>

@@ -23,32 +23,44 @@ class MapPage extends Component {
     this.hideProfile = this.hideProfile.bind(this);
 
     var p = (<div/>);
-    if (props.mode === "profile") {
-      this.props.profiles.forEach(d => { if (d.id === props.profile) p = (<Profile onEditProfile={this.handleEditProfile} api={this.props.options.api} profile={d}/>) })
-      this.prefix = "/profile/" + props.profile;
-    }
-    else if (props.mode === "edit") {
-      //console.log(this.props.options.api.getApiUser());
-      this.props.profiles.forEach(d => { if (d.id === props.profile) p = (<EditProfile onCreateProfile={this.hideProfile} api={this.props.options.api} profile={d}/>) })
-      this.prefix = "/edit/" + props.profile;
-    }
-    else if (props.mode === "list") {
-      const profileIds = props.list;
+    switch (props.mode) {
 
-      if (profileIds === "empty") {
-        p = (<Profiles api={this.props.options.api} empty/>)
-      } else {
-        var profiles = [];
-        this.props.profiles.forEach(d => { if (profileIds.includes(d.id)) profiles.push(d); })
-        p = (<Profiles onProfileClick={this.handleProfileClick} api={this.props.options.api} data={profiles}/>)
-        this.prefix = "/list/" + profileIds;
-      }
+      case "profile":
+        this.props.profiles.forEach(d => { if (d.id === props.profile) p = (<Profile onEditProfile={this.handleEditProfile} api={this.props.options.api} profile={d}/>) })
+        this.prefix = "/profile/" + props.profile;
+        break;
+
+      case "edit":
+        this.props.profiles.forEach(d => { if (d.id === props.profile) p = (<EditProfile onCreateProfile={this.hideProfile} api={this.props.options.api} profile={d}/>) })
+        this.prefix = "/edit/" + props.profile;
+        break;
+
+      case "list":
+        const profileIds = props.list;
+        if (profileIds === "empty") {
+          p = (<Profiles api={this.props.options.api} empty/>)
+        } else {
+          var profiles = this.props.profiles.filter(d => profileIds.includes(d.id))
+          p = (<Profiles onProfileClick={this.handleProfileClick} api={this.props.options.api} data={profiles}/>)
+          this.prefix = "/list/" + profileIds;
+        }
+        break;
+
+      case "search":
+        this.prefix = "/search/" + props.tag;
+        break;
+
+      case "seek":
+        this.prefix = "/seek";
+        break;
+
+      case "signup":
+        p = (<ProfileMaker onCreateProfile={this.hideProfile} api={this.props.options.api}/>);
+        this.prefix = "/signup";
+        break;
+
+      default: this.prefix = "";
     }
-    else if (props.mode === "signup") {
-      p = (<ProfileMaker onCreateProfile={this.hideProfile} api={this.props.options.api}/>);
-      this.prefix = "/signup"
-    } else
-      this.prefix = "";
 
     this.state = {
       hidden: props.mode === "vanilla",
@@ -57,30 +69,74 @@ class MapPage extends Component {
     }
 	}
 
+  componentDidMount() {
+
+    if (this.props.mode === "search" || this.props.mode === "seek") {
+
+      var search = this.props.mode === "search" ?
+         this.props.profiles.filter(p =>
+            p.tags.map(tag => tag.toLowerCase()).includes(this.props.tag.toLowerCase()) ||
+            p.resume.toLowerCase().includes(this.props.tag.toLowerCase())
+          ) :
+          this.props.profiles.slice();
+        
+      let bounds = this.refs.map.refs.map.leafletElement.getBounds();
+      search = search.filter(p => p.location.latlng.lat < bounds._northEast.lat && p.location.latlng.lat > bounds._southWest.lat
+        && p.location.latlng.lng < bounds._northEast.lng && p.location.latlng.lng > bounds._southWest.lng)
+
+      if (search.length > 0)
+        this.setState({profile : <Profiles onProfileClick={this.handleProfileClick} api={this.props.options.api} data={search}/>})
+      else
+        this.setState({profile : <Profiles  api={this.props.options.api} empty/>})
+    }
+  }
+
   componentWillReceiveProps(props) {
 
     var p = (<div/>);
-    if (props.mode === "profile") {
-      this.props.profiles.forEach(d => { if (d.id === props.profile) p = (<Profile onEditProfile={this.handleEditProfile} api={this.props.options.api} profile={d}/>) })
-      this.prefix = "/profile/" + props.profile;
-    }
-    else if (props.mode === "edit") {
-      this.props.profiles.forEach(d => { if (d.id === props.profile) p = (<EditProfile onCreateProfile={this.hideProfile} api={this.props.options.api} profile={d}/>) })
-      this.prefix = "/edit/" + props.profile;
-    }
-    else if (props.mode === "list") {
-      const profileIds = props.list;
+    switch (props.mode) {
 
-      var profiles = [];
-      this.props.profiles.forEach(d => { if (profileIds.includes(d.id)) profiles.push(d); })
-      p = (<Profiles onProfileClick={this.handleProfileClick} api={this.props.options.api} data={profiles}/>)
-      this.prefix = "/list/" + profileIds;
+      case "profile":
+        this.props.profiles.forEach(d => { if (d.id === props.profile) p = (<Profile onEditProfile={this.handleEditProfile} api={this.props.options.api} profile={d}/>) })
+        this.prefix = "/profile/" + props.profile;
+        break;
+
+      case "edit":
+        this.props.profiles.forEach(d => { if (d.id === props.profile) p = (<EditProfile onCreateProfile={this.hideProfile} api={this.props.options.api} profile={d}/>) })
+        this.prefix = "/edit/" + props.profile;
+        break;
+
+      case "list":
+        const profileIds = props.list;
+        if (profileIds === "empty") {
+          p = (<Profiles api={this.props.options.api} empty/>)
+        } else {
+          var profiles = [];
+          this.props.profiles.forEach(d => { if (profileIds.includes(d.id)) profiles.push(d); })
+          p = (<Profiles onProfileClick={this.handleProfileClick} api={this.props.options.api} data={profiles}/>)
+          this.prefix = "/list/" + profileIds;
+        }
+        break;
+
+      case "search":
+        var search = this.props.profiles.filter(p =>
+          p.tags.map(tag => tag.toLowerCase()).includes(this.props.tag.toLowerCase()) ||
+          p.resume.toLowerCase().includes(this.props.tag.toLowerCase())
+        );
+        
+        let bounds = this.refs.map.refs.map.leafletElement.getBounds();
+        search = search.filter(p => p.location.latlng.lat < bounds._northEast.lat && p.location.latlng.lat > bounds._southWest.lat
+          && p.location.latlng.lng < bounds._northEast.lng && p.location.latlng.lng > bounds._southWest.lng)
+        this.prefix = "/search/" + props.tag;
+        break;
+
+      case "signup":
+        p = (<ProfileMaker onCreateProfile={this.hideProfile} api={this.props.options.api}/>);
+        this.prefix = "/signup";
+        break;
+
+      default: this.prefix = "";
     }
-    else if (props.mode === "signup") {
-      p = (<ProfileMaker onCreateProfile={this.hideProfile} api={this.props.options.api}/>);
-      this.prefix = "/signup"
-    } else
-      this.prefix = "";
 
     this.setState({
       hidden: props.mode === "vanilla",
@@ -132,13 +188,22 @@ class MapPage extends Component {
     this.props.history.push(`/signup/${state.lat}/${state.lng}/${state.zoom}`)
   }
 
-  validateSearch () {
+  handleSearch(tag) {
 
-    let industry = document.getElementById("industry-search-form").value;
-    this.refs.map.focusSearch(industry === "" ? undefined : industry, this.searchLocation);
+    const state = this.refs.map.getState();
+
+    this.props.history.push(`/search/tag/${state.lat}/${state.lng}/${state.zoom}`)
   }
 
-  selectCity (data) {
+  validateSearch () {
+
+    const state = this.refs.map.getState();
+    const tag = document.getElementById("industry-search-form").value;
+
+    this.props.history.push((tag === "" ? `/seek/` : `/search/${tag}/`) + `${state.lat}/${state.lng}/${state.zoom}`)
+  }
+
+  /*selectCity (data) {
 
     this.searchLocation = data.suggestion.latlng;
   }
@@ -146,7 +211,7 @@ class MapPage extends Component {
   removeCity () {
 
     this.searchLocation = undefined;
-  }
+  }*/
 
   toggleExtendedNavbar() {
 
@@ -165,8 +230,7 @@ class MapPage extends Component {
             </svg>
           </span>
       		<form id="map-search-form" action="javascript:()=>{};" onSubmit={this.validateSearch}>
-      			<input id="industry-search-form" className="header-input" type="text" placeholder="Secteur d'activité" name="tag"/>
-      			<Place id="city-search-form" onChange={this.selectCity.bind(this)} onClear={this.removeCity.bind(this)} name="city"/>
+      			<input id="industry-search-form" className="header-input" type="text" placeholder="Mots-clefs" name="tag"/>
       			<input className="header-input" type="submit" name="confirm" value="Ok"/>
       		</form>
       		<div id="header-links">

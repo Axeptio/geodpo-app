@@ -549,6 +549,12 @@ p {
 	  padding: 0.18em 0.45em;
 	  margin: 0.3em 0.3em;
 	  border-radius: 3px;
+	  transition: background-color 0.2s;
+
+	  &:hover {
+
+	  	background-color: #dddedf;
+	  }
 	}
 
 	input ~ *, &.ok-tag { cursor: pointer }
