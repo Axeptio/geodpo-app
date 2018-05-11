@@ -73,6 +73,13 @@ class EditProfile extends Component {
         this.forceUpdate();
       }
 
+      filteredSuggestions(query, suggestions) {
+
+        return suggestions.filter(item => item.text.toLowerCase().indexOf(query.toLowerCase()) === 0).concat(
+          suggestions.filter(item => item.text.toLowerCase().indexOf(query.toLowerCase()) > 0)
+        ).filter((value, index) => index < 6);
+      }
+
       confirmEdition () {
 
         function validateEmail(email) {
@@ -268,7 +275,10 @@ class EditProfile extends Component {
                                     placeholder="Ajouter un tag"
                                     handleDelete={this.onDeleteTag.bind(this)}
                                     handleAddition={this.onAddTag.bind(this)}
-                                    handleDrag={this.onDragTag.bind(this)} />
+                                    handleDrag={this.onDragTag.bind(this)}
+                                    handleFilterSuggestions={this.filteredSuggestions}
+                                    minQueryLength={1}
+                                    maxLength = "20"/>
                             </div>
                           </div>
                         </div>
@@ -296,7 +306,7 @@ class EditProfile extends Component {
                                 <h2>Informations de contact</h2>
                                 <Input type="email" name="public-email" id="public-email-form" placeholder="Public email" defaultValue={this.props.profile.publicEmail}/>
                                 <Input type="tel" name="tel" id="tel-form" placeholder="Téléphone" defaultValue={this.props.profile.tel}/>
-                                <Input type="url" name="website" id="website-form" placeholder="Site web" defaultValue={this.props.profile.website}/>
+                                <Input type="text" name="website" id="website-form" placeholder="Site web" defaultValue={this.props.profile.website}/>
                                 <Input type="text" name="company-name" id="company-form" placeholder="Raison sociale" defaultValue={this.props.profile.company}/>
                                 <FormText>Ces informations sont facultatives et seront visibles publiquement.</FormText>
                             </div>

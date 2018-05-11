@@ -1,9 +1,19 @@
 { "suggestions" : [
 	{ "id": "Web", "text": "Web" },
-	{ "id": "Health", "text": "Health" },
-	{ "id": "IT", "text": "IT" },
+	{ "id": "Ressources humaines", "text": "Ressources humaines" },
+	{ "id": "Marketing", "text": "Marketing" },
+	{ "id": "Webmarketing", "text": "Webmarketing" },
 	{ "id": "Agriculture", "text": "Agriculture" },
 	{ "id": "Education", "text": "Education" },
-	{ "id": "Engineering", "text": "Engineering" },
+	{ "id": "Industrie", "text": "Industrie" },
+	{ "id": "Recrutement", "text": "Recrutement" },
+	{ "id": "Conseil", "text": "Conseil" },
+	{ "id": "Finance", "text": "Finance" },
+	{ "id": "Droit", "text": "Droit" },
+	{ "id": "Juridique", "text": "Juridique" },
+	{ "id": "E-commerce", "text": "E-commerce" },
+	{ "id": "Développement informatique", "text": "Développement informatique" },
+	{ "id": "Immobilier", "text": "Immobilier" },
+	{ "id": "Editeur logiciel", "text": "Editeur logiciel" },
 	{ "id": "Environment", "text": "Environment" }
 ]}

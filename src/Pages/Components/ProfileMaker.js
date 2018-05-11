@@ -71,6 +71,13 @@ class ProfileMaker extends Component {
         this.forceUpdate();
       }
 
+      filteredSuggestions(query, suggestions) {
+
+        return suggestions.filter(item => item.text.toLowerCase().indexOf(query.toLowerCase()) === 0).concat(
+          suggestions.filter(item => item.text.toLowerCase().indexOf(query.toLowerCase()) > 0)
+        ).filter((value, index) => index < 6);
+      }
+
       confirmInscription () {
 
         function validateEmail(email) {
@@ -253,7 +260,10 @@ class ProfileMaker extends Component {
                                     placeholder="Ajouter un tag"
                                     handleDelete={this.onDeleteTag.bind(this)}
                                     handleAddition={this.onAddTag.bind(this)}
-                                    handleDrag={this.onDragTag.bind(this)} />
+                                    handleDrag={this.onDragTag.bind(this)}
+                                    handleFilterSuggestions={this.filteredSuggestions}
+                                    minQueryLength={1}
+                                    maxLength = "20"/>
                             </div>
                           </div>
                         </div>
@@ -281,7 +291,7 @@ class ProfileMaker extends Component {
                                 <h2>Informations de contact</h2>
                                 <Input type="email" name="public-email" id="public-email-form" placeholder="Public email"/>
                                 <Input type="tel" name="tel" id="tel-form" placeholder="Téléphone"/>
-                                <Input type="url" name="website" id="website-form" placeholder="Site web"/>
+                                <Input type="text" name="website" id="website-form" placeholder="Site web"/>
                                 <Input type="text" name="company-name" id="company-form" placeholder="Raison sociale"/>
                                 <FormText>Ces informations sont facultatives et seront visibles publiquement.</FormText>
                             </div>

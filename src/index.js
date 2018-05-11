@@ -6,7 +6,7 @@ import Api from './Api/Api'
 
 //ReactGA.initialize('UA-XXXXXXXX')
 
-const api = new Api({ baseURL: process.env.REACT_APP_GEODPO_API_URL });
+const api = new Api({ baseURL: /*process.env.REACT_APP_GEODPO_API_URL*/"https://api.geodpo.eu/" });
 
 const options = { api }
 

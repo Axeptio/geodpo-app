@@ -86,7 +86,7 @@ class Map extends Component {
     let acceptRange = 40;
     if (industry !== undefined) {
       this.state.profiles.forEach(p => {
-        if (p.tags.map(tag => tag.toLowerCase()).includes(industry.toLowerCase()))
+        if (p.tags.map(tag => tag.toLowerCase()).includes(industry.toLowerCase()) || p.resume.toLowerCase().includes(industry.toLowerCase()))
           search.push(p);
       })
     } else search = this.state.profiles.slice();
