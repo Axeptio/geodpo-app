@@ -5,6 +5,7 @@ import Profile from './Components/Profile'
 import EditProfile from './Components/EditProfile'
 import ProfileMenu from './Components/ProfileMenu'
 import ProfileMaker from './Components/ProfileMaker'
+//import SigninMenu from './Components/SigninMenu'
 //import dpo from '../Data/dpo.json'
 import Profiles from './Components/Profiles';
 import Place from 'react-algolia-places';
@@ -26,7 +27,7 @@ class MapPage extends Component {
     switch (props.mode) {
 
       case "profile":
-        this.props.profiles.forEach(d => { if (d.id === props.profile) p = (<Profile onEditProfile={this.handleEditProfile} api={this.props.options.api} profile={d}/>) })
+        this.props.profiles.forEach(d => { if (d.id === props.profile) p = (<Profile onEditProfile={this.handleEditProfile} api={this.props.options.api} profile={d} onSearch={tag => this.handleSearch(tag)}/>) })
         this.prefix = "/profile/" + props.profile;
         break;
 
@@ -41,7 +42,7 @@ class MapPage extends Component {
           p = (<Profiles api={this.props.options.api} empty/>)
         } else {
           var profiles = this.props.profiles.filter(d => profileIds.includes(d.id))
-          p = (<Profiles onProfileClick={this.handleProfileClick} api={this.props.options.api} data={profiles}/>)
+          p = (<Profiles onProfileClick={this.handleProfileClick} api={this.props.options.api} data={profiles} onSearch={tag => this.handleSearch(tag)}/>)
           this.prefix = "/list/" + profileIds;
         }
         break;
@@ -58,6 +59,11 @@ class MapPage extends Component {
         p = (<ProfileMaker onCreateProfile={this.hideProfile} api={this.props.options.api}/>);
         this.prefix = "/signup";
         break;
+
+      /*case "signin":
+        p = (<SigninMenu api={this.props.options.api}/>);
+        this.prefix = "/signin";
+        break;*/
 
       default: this.prefix = "";
     }
@@ -85,7 +91,7 @@ class MapPage extends Component {
         && p.location.latlng.lng < bounds._northEast.lng && p.location.latlng.lng > bounds._southWest.lng)
 
       if (search.length > 0)
-        this.setState({profile : <Profiles onProfileClick={this.handleProfileClick} api={this.props.options.api} data={search}/>})
+        this.setState({profile : <Profiles onProfileClick={this.handleProfileClick} api={this.props.options.api} data={search} onSearch={tag => this.handleSearch(tag)}/>})
       else
         this.setState({profile : <Profiles  api={this.props.options.api} empty/>})
     }
@@ -97,7 +103,7 @@ class MapPage extends Component {
     switch (props.mode) {
 
       case "profile":
-        this.props.profiles.forEach(d => { if (d.id === props.profile) p = (<Profile onEditProfile={this.handleEditProfile} api={this.props.options.api} profile={d}/>) })
+        this.props.profiles.forEach(d => { if (d.id === props.profile) p = (<Profile onEditProfile={this.handleEditProfile} api={this.props.options.api} profile={d} onSearch={tag => this.handleSearch(tag)}/>) })
         this.prefix = "/profile/" + props.profile;
         break;
 
@@ -113,27 +119,51 @@ class MapPage extends Component {
         } else {
           var profiles = [];
           this.props.profiles.forEach(d => { if (profileIds.includes(d.id)) profiles.push(d); })
-          p = (<Profiles onProfileClick={this.handleProfileClick} api={this.props.options.api} data={profiles}/>)
+          p = (<Profiles onProfileClick={this.handleProfileClick} api={this.props.options.api} data={profiles} onSearch={tag => this.handleSearch(tag)}/>)
           this.prefix = "/list/" + profileIds;
         }
         break;
 
       case "search":
+        {
         var search = this.props.profiles.filter(p =>
           p.tags.map(tag => tag.toLowerCase()).includes(this.props.tag.toLowerCase()) ||
-          p.resume.toLowerCase().includes(this.props.tag.toLowerCase())
+          p.resume.toLowerCase().includes(props.tag.toLowerCase())
         );
         
         let bounds = this.refs.map.refs.map.leafletElement.getBounds();
         search = search.filter(p => p.location.latlng.lat < bounds._northEast.lat && p.location.latlng.lat > bounds._southWest.lat
           && p.location.latlng.lng < bounds._northEast.lng && p.location.latlng.lng > bounds._southWest.lng)
+        if (search.length > 0)
+          p = <Profiles onProfileClick={this.handleProfileClick} api={this.props.options.api} data={search} onSearch={tag => this.handleSearch(tag)}/>
+        else
+          p = <Profiles  api={this.props.options.api} empty/>
         this.prefix = "/search/" + props.tag;
+        }
+        break;
+
+      case "seek":
+        {
+        let bounds = this.refs.map.refs.map.leafletElement.getBounds();
+        let seek = this.props.profiles.filter(p => p.location.latlng.lat < bounds._northEast.lat && p.location.latlng.lat > bounds._southWest.lat
+          && p.location.latlng.lng < bounds._northEast.lng && p.location.latlng.lng > bounds._southWest.lng)
+        if (seek.length > 0)
+          p = <Profiles onProfileClick={this.handleProfileClick} api={this.props.options.api} data={search} onSearch={tag => this.handleSearch(tag)}/>
+        else
+          p = <Profiles  api={this.props.options.api} empty/>
+        this.prefix = "/seek";
+        }
         break;
 
       case "signup":
         p = (<ProfileMaker onCreateProfile={this.hideProfile} api={this.props.options.api}/>);
         this.prefix = "/signup";
         break;
+
+      /*case "signin":
+        p = (<SigninMenu api={this.props.options.api}/>);
+        this.prefix = "/signin";
+        break;*/
 
       default: this.prefix = "";
     }
@@ -192,15 +222,12 @@ class MapPage extends Component {
 
     const state = this.refs.map.getState();
 
-    this.props.history.push(`/search/tag/${state.lat}/${state.lng}/${state.zoom}`)
+    this.props.history.push((tag === "" ? `/seek/` : `/search/${tag}/`) + `${state.lat}/${state.lng}/${state.zoom}`)
   }
 
   validateSearch () {
 
-    const state = this.refs.map.getState();
-    const tag = document.getElementById("industry-search-form").value;
-
-    this.props.history.push((tag === "" ? `/seek/` : `/search/${tag}/`) + `${state.lat}/${state.lng}/${state.zoom}`)
+    this.handleSearch(document.getElementById("industry-search-form").value);
   }
 
   /*selectCity (data) {

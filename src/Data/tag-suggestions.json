@@ -15,5 +15,12 @@
 	{ "id": "Développement informatique", "text": "Développement informatique" },
 	{ "id": "Immobilier", "text": "Immobilier" },
 	{ "id": "Editeur logiciel", "text": "Editeur logiciel" },
-	{ "id": "Environment", "text": "Environment" }
+	{ "id": "Environment", "text": "Environment" },
+	{ "id": "Tourisme", "text": "Tourisme" },
+	{ "id": "Architecture", "text": "Architecture" },
+	{ "id": "Santé", "text": "Santé" },
+	{ "id": "Communication", "text": "Communication" },
+	{ "id": "Publicité", "text": "Publicité" },
+	{ "id": "Fonction publique", "text": "Fonction publique" },
+	{ "id": "Milieu associatif", "text": "Milieu associatif" }
 ]}

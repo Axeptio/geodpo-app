@@ -38,6 +38,18 @@ class App extends Component {
 			);
 		}
 
+		function signinMap ({match, history}) { 
+
+			return (
+				<MapPage position={getPosition(match)}
+					options={this.props.options}
+					profiles={this.state.profiles}
+					missions={this.state.missions}
+					history={history}
+					mode="signin"/>
+			);
+		}
+
 		function signupMap ({match, history}) { 
 
 			return (
@@ -118,6 +130,7 @@ class App extends Component {
 			<BrowserRouter>
 				<Switch>
 					<Route exact path="/:lat?/:lng?/:zoom?" component={vanillaMap.bind(this)}/>
+					<Route path="/signin/:lat?/:lng?/:zoom?" component={signinMap.bind(this)}/>
 					<Route path="/signup/:lat?/:lng?/:zoom?" component={signupMap.bind(this)}/>
 					<Route path="/list/:ids/:lat?/:lng?/:zoom?" component={listMap.bind(this)}/>
 					<Route path="/search/:tag/:lat?/:lng?/:zoom?" component={searchMap.bind(this)}/>

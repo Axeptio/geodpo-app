@@ -6824,6 +6824,8 @@ main {
     #header-links .help-link:hover {
       cursor: pointer;
       text-decoration: underline; }
+  #header-links > * + * {
+    margin-left: 1em; }
 
 .text-header {
   text-align: center;
@@ -6874,6 +6876,9 @@ h1, h2, p {
   #profile-menu::-webkit-scrollbar {
     display: none; }
 
+.short-profiles-container {
+  padding: 1em; }
+
 .content-box, .short-profile {
   background-color: white;
   padding: 1em;
@@ -6881,9 +6886,9 @@ h1, h2, p {
 
 .short-profile {
   display: inline-block;
-  margin: 1.66%;
+  margin: 1.165%;
   height: 17.5em;
-  width: 30%;
+  width: 31%;
   box-shadow: 0px 0px 4px 0px #8887;
   text-align: center;
   vertical-align: top;
@@ -7090,7 +7095,10 @@ h2 {
   background-color: #f2f4f7;
   padding: 0.18em 0.45em;
   margin: 0.3em 0.3em;
-  border-radius: 3px; }
+  border-radius: 3px;
+  transition: background-color 0.2s; }
+  .tag:not(label):hover, .tag *:hover {
+    background-color: #dddedf; }
 .tag input ~ *, .tag.ok-tag {
   cursor: pointer; }
 .tag input {
@@ -7274,6 +7282,7 @@ ul {
     box-shadow: 2px 2px 3px 0px #0008;
     color: white;
     font-weight: bold;
+    font-size: 1.4em;
     line-height: 1.8em;
     text-align: center;
     background: radial-gradient(#34527b, #162233); }
@@ -7520,11 +7529,11 @@ ul {
       margin: 0.5em auto;
       width: 60%; }
 
-  .add-button {
+  .add-button, .signin-button {
     border-radius: 0 !important;
     line-height: 1.8em !important;
     text-align: center !important; }
-    .add-button .add-button-icon {
+    .add-button.add-button .add-button-icon, .add-button.signin-button .signin-button-icon, .signin-button.add-button .add-button-icon, .signin-button.signin-button .signin-button-icon {
       display: none !important; }
 
   #profile-container {
@@ -7608,7 +7617,9 @@ ul {
   border-radius: 1.2em;
   border: 2px solid #96c02d;
   transition: background-color 0.2s;
-  cursor: pointer; }
+  cursor: pointer;
+  position: relative;
+  overflow: hidden; }
   .add-button .add-button-icon {
     height: 2em;
     padding: 0.15em 0.28em;
@@ -7628,9 +7639,53 @@ ul {
     color: #96c02d;
     display: inline-block;
     transition: color 0.2s; }
-  .add-button:hover {
-    background-color: #96c02d; }
-    .add-button:hover .add-button-text {
-      color: white; }
+  .add-button:hover .add-button-text {
+    color: white; }
+  .add-button:hover:before {
+    left: 0; }
+  .add-button:before {
+    content: "";
+    width: 200%;
+    height: 100%;
+    display: inline-block;
+    position: absolute;
+    left: -200%;
+    background: linear-gradient(to right, #96c02d 50%, white);
+    transition: left 0.3s;
+    z-index: -1; }
+
+.signin-button {
+  display: inline-block;
+  box-sizing: content-box;
+  height: 2em;
+  line-height: 1em;
+  border-radius: 1.2em;
+  border: 2px solid #34527b;
+  background-color: #34527b;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden; }
+  .signin-button .signin-button-icon {
+    height: 2em;
+    padding: 0.15em 0.28em;
+    margin-left: -1px;
+    width: 2.25em;
+    display: inline-block;
+    border-radius: 1em; }
+    .signin-button .signin-button-icon svg {
+      height: 1.625em; }
+      .signin-button .signin-button-icon svg path {
+        fill: white; }
+  .signin-button .signin-button-text {
+    height: 1.5em;
+    line-height: 1.5;
+    color: white;
+    display: inline-block;
+    width: 0em;
+    padding: 0;
+    transition: width 0.3s, padding 0.3s; }
+  .signin-button:hover .signin-button-text {
+    padding: 0 1em;
+    width: 12em; }
 
 /*# sourceMappingURL=App.css.map */

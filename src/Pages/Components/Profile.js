@@ -84,7 +84,7 @@ class Profile extends Component {
                                           </button>
       						<h2 className="full-name">{this.props.profile.fullname}</h2>
 			      			<div className="tag-list profile-tag-list">
-			      				{ this.props.profile.tags.map(tag => <span key={"tag-" + tag} className="tag">{tag}</span>) }
+			      				{ this.props.profile.tags.map(tag => <span key={"tag-" + tag} className="tag" onClick={() => this.props.onSearch(tag)}>{tag}</span>) }
 			      			</div>
       					</div>
       				</div>
