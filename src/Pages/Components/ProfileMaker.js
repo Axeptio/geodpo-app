@@ -309,6 +309,7 @@ class ProfileMaker extends Component {
                                 <h2>Informations de connexion</h2>
                                 <Input type="email" name="email" id="email-form" placeholder="Email"/>
                                 <Input type="password" name="password" id="password-form" placeholder="Mot de passe"/>
+                                <FormText>Ces informations seront nécessaires pour modifier votre profil.</FormText>
                             </div>
                             <div className="content-box contact-box">
                               <button type="submit" className="contact-button">Confirmer l'inscription</button>
