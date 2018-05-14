@@ -57,7 +57,7 @@ class Map extends Component {
 
   focusSearch (tag) {
 
-    function haversineDistance(coords1, coords2) {
+    /*function haversineDistance(coords1, coords2) {
 
       function toRad(x) { return x * Math.PI / 180; }
 
@@ -80,7 +80,7 @@ class Map extends Component {
       var d = R * c;
 
       return d;
-    }
+    }*/
 
     
     //let acceptRange = 40;

@@ -6,6 +6,7 @@ import suggestions from '../../Data/tag-suggestions.json';
 import Select from 'react-select';
 import { WithContext as ReactTags } from 'react-tag-input';
 import { ListGroup, ListGroupItem } from 'reactstrap';
+import CKEditor from "react-ckeditor-component";
 
 class EditProfile extends Component {
 
@@ -25,7 +26,7 @@ class EditProfile extends Component {
 
       componentDidMount () {
 
-        document.getElementsByClassName("ap-input")[1].value = this.props.profile.location.name;
+        document.getElementsByClassName("ap-input")[0].value = this.props.profile.location.name;
       }
 
       previewImage() {
@@ -138,7 +139,7 @@ class EditProfile extends Component {
                   fullname: document.getElementById("fullname-form").value,
                   email: this.props.profile.email,
                   tags: this.tags.map(e => e.id),
-                  resume: document.getElementById("bio-form").value,
+                  resume: this.refs.cke.editorInstance.getData(),
                   offers: offers,
                   location: this.location,
                   areas: this.areaList,
@@ -299,7 +300,18 @@ class EditProfile extends Component {
                         </div>
                         <div className="profile-box content-box">
                               <h2>Résumé</h2>
-                              <Input type="textarea" name="bio" id="bio-form" defaultValue={this.props.profile.resume}/>
+                              <CKEditor ref="cke" name="bio" id="bio-form" 
+                                content={this.props.profile.resume}
+                                config={{
+                                  language: 'fr',
+                                  uiColor: '#f2f4f7',
+                                  removePlugins: 'elementspath',
+                                  toolbarGroups: [
+                                    { name: 'basicstyles', groups: [ 'basicstyles' ] }, 
+                                    { name: 'links' }, 
+                                    { name: 'paragraph',   groups: [ 'list', 'indent' ] }
+                                  ]
+                              }}/>
                         </div>
                         <div className="profile-box">
                             <div className="content-box">

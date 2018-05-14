@@ -6732,7 +6732,7 @@ a.text-dark:hover, a.text-dark:focus {
   .table-bordered th,
   .table-bordered td {
     border: 1px solid #dee2e6 !important; } }
-* {
+*:not(ul) {
   margin: 0;
   padding: 0; }
 
@@ -7130,9 +7130,6 @@ h2 {
   .upper-tag input:checked ~ *, .upper-tag.ok-tag {
     background-color: #96c02d; }
 
-ul {
-  list-style-type: none; }
-
 .ReactTags__suggestions {
   position: absolute;
   top: 2.1em;
@@ -7470,9 +7467,111 @@ ul {
 .handheld-extender {
   display: none; }
 
-#profile-maker .avatar {
+#profile-maker .avatar, #signin-box .avatar {
   float: none;
   margin: auto; }
+
+.empty-list-indicator {
+  margin: 2em;
+  text-align: center;
+  font-weight: bold; }
+
+.offer-list {
+  margin: 0 -0.7em; }
+
+.add-button {
+  display: inline-block;
+  box-sizing: content-box;
+  height: 2em;
+  line-height: 1em;
+  border-radius: 1.2em;
+  border: 2px solid #96c02d;
+  transition: background-color 0.2s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden; }
+  .add-button .add-button-icon {
+    height: 2em;
+    padding: 0.15em 0.28em;
+    margin-left: -1px;
+    width: 2.25em;
+    display: inline-block;
+    border-radius: 1em;
+    background-color: #96c02d; }
+    .add-button .add-button-icon svg {
+      height: 1.625em; }
+      .add-button .add-button-icon svg path {
+        fill: white; }
+  .add-button .add-button-text {
+    padding: 0 1em;
+    height: 1.5em;
+    line-height: 1.5;
+    color: #96c02d;
+    display: inline-block;
+    transition: color 0.2s; }
+  .add-button:hover .add-button-text {
+    color: white; }
+  .add-button:hover:before {
+    left: 0; }
+  .add-button:before {
+    content: "";
+    width: 200%;
+    height: 100%;
+    display: inline-block;
+    position: absolute;
+    left: -200%;
+    background: linear-gradient(to right, #96c02d 50%, white);
+    transition: left 0.3s;
+    z-index: -1; }
+
+.signin-button {
+  display: inline-block;
+  box-sizing: content-box;
+  height: 2em;
+  line-height: 1em;
+  border-radius: 1.2em;
+  border: 2px solid #34527b;
+  background-color: #34527b;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden; }
+  .signin-button .signin-button-icon {
+    height: 2em;
+    padding: 0.15em 0.28em;
+    margin-left: -1px;
+    width: 2.25em;
+    display: inline-block;
+    border-radius: 1em; }
+    .signin-button .signin-button-icon svg {
+      height: 1.625em; }
+      .signin-button .signin-button-icon svg path {
+        fill: white; }
+  .signin-button .signin-button-text {
+    height: 1.5em;
+    line-height: 1.5;
+    color: white;
+    display: inline-block;
+    width: 0em;
+    padding: 0;
+    transition: width 0.3s, padding 0.3s; }
+  .signin-button:hover .signin-button-text {
+    padding: 0 1em;
+    width: 12em; }
+
+.menu-symbol {
+  height: 80px;
+  width: 80px;
+  margin: auto;
+  border-radius: 40px;
+  background-color: transparent;
+  padding: 10px; }
+  .menu-symbol svg {
+    height: 60px;
+    width: 60px;
+    fill: #34527b; }
+
+.bio-content p {
+  margin: 0.5em 0; }
 
 @media only screen and (max-width: 1150px) {
   .navbar {
@@ -7494,18 +7593,6 @@ ul {
     margin: 0;
     padding: 0; }
 
-  #header-links {
-    position: static;
-    right: unset;
-    width: 100%;
-    height: 3em;
-    overflow: hidden;
-    padding: 0.5em 0; }
-    #header-links .help-link {
-      max-width: unset;
-      width: 100%;
-      text-align: center; }
-
   #img-logo {
     margin: 0; }
 
@@ -7522,7 +7609,7 @@ ul {
     width: 90%; }
     #map-search-form input[type="text"], #map-search-form .algolia-places {
       margin: 0.5em auto;
-      width: 80%; }
+      width: 60%; }
     #map-search-form input[type="text"] {
       line-height: 2em; }
     #map-search-form input[type="submit"] {
@@ -7601,91 +7688,25 @@ ul {
     .short-profile h2, .short-profile .tag-list {
       width: unset !important;
       text-align: left;
-      justify-content: left; } }
-.empty-list-indicator {
-  margin: 2em;
-  text-align: center;
-  font-weight: bold; }
+      justify-content: left; }
 
-.offer-list {
-  margin: 0 -0.7em; }
-
-.add-button {
-  box-sizing: content-box;
-  height: 2em;
-  line-height: 1em;
-  border-radius: 1.2em;
-  border: 2px solid #96c02d;
-  transition: background-color 0.2s;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden; }
-  .add-button .add-button-icon {
-    height: 2em;
-    padding: 0.15em 0.28em;
-    margin-left: -1px;
-    width: 2.25em;
-    display: inline-block;
-    border-radius: 1em;
-    background-color: #96c02d; }
-    .add-button .add-button-icon svg {
-      height: 1.625em; }
-      .add-button .add-button-icon svg path {
-        fill: white; }
-  .add-button .add-button-text {
-    padding: 0 1em;
-    height: 1.5em;
-    line-height: 1.5;
-    color: #96c02d;
-    display: inline-block;
-    transition: color 0.2s; }
-  .add-button:hover .add-button-text {
-    color: white; }
-  .add-button:hover:before {
-    left: 0; }
-  .add-button:before {
-    content: "";
-    width: 200%;
-    height: 100%;
-    display: inline-block;
-    position: absolute;
-    left: -200%;
-    background: linear-gradient(to right, #96c02d 50%, white);
-    transition: left 0.3s;
-    z-index: -1; }
-
-.signin-button {
-  display: inline-block;
-  box-sizing: content-box;
-  height: 2em;
-  line-height: 1em;
-  border-radius: 1.2em;
-  border: 2px solid #34527b;
-  background-color: #34527b;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden; }
-  .signin-button .signin-button-icon {
-    height: 2em;
-    padding: 0.15em 0.28em;
-    margin-left: -1px;
-    width: 2.25em;
-    display: inline-block;
-    border-radius: 1em; }
-    .signin-button .signin-button-icon svg {
-      height: 1.625em; }
-      .signin-button .signin-button-icon svg path {
-        fill: white; }
-  .signin-button .signin-button-text {
-    height: 1.5em;
-    line-height: 1.5;
-    color: white;
-    display: inline-block;
-    width: 0em;
-    padding: 0;
-    transition: width 0.3s, padding 0.3s; }
-  .signin-button:hover .signin-button-text {
-    padding: 0 1em;
-    width: 12em; }
+  #header-links {
+    position: static;
+    right: unset;
+    width: 90%;
+    overflow: hidden;
+    padding: 0.5em 0; }
+    #header-links .help-link {
+      max-width: unset;
+      width: 100%;
+      text-align: center; }
+    #header-links .signin-button, #header-links .add-button {
+      display: block;
+      width: 60%;
+      margin: auto; }
+      #header-links .signin-button .signin-button-text, #header-links .signin-button .add-button-text, #header-links .add-button .signin-button-text, #header-links .add-button .add-button-text {
+        width: auto; }
+    #header-links > * + * {
+      margin: 0.5em auto !important; } }
 
 /*# sourceMappingURL=App.css.map */

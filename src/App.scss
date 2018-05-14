@@ -25,7 +25,7 @@ $yiq-contrasted-threshold: 200;
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
-* {
+*:not(ul) {
 	margin: 0;
 	padding: 0;
 }
@@ -610,10 +610,6 @@ p {
   }
 }
 
-ul {
-  list-style-type: none;
-}
-
 .ReactTags__suggestions {
 
 	position: absolute;
@@ -1069,11 +1065,181 @@ ul {
 	display: none;
 }
 
-#profile-maker .avatar {
+#profile-maker .avatar, #signin-box .avatar {
 
 	float: none;
 	margin: auto;
 }
+
+.empty-list-indicator {
+
+	margin: 2em;
+	text-align: center;
+	font-weight: bold;
+}
+
+.offer-list {
+
+	margin: 0 -0.7em;
+}
+
+.add-button {
+
+	display: inline-block;
+	box-sizing: content-box;
+    height: 2em;
+    line-height: 1em;
+    border-radius: 1.2em;
+    border: 2px solid $primary;
+	transition: background-color 0.2s;
+	cursor: pointer;
+	position: relative;
+    overflow: hidden;
+
+    .add-button-icon {
+
+    	height: 2em;
+    	padding: 0.15em 0.28em;
+	    margin-left: -1px;
+	    width: 2.25em;
+	    display: inline-block;
+	    border-radius: 1em;
+	    background-color: $primary;
+
+	    svg {
+
+		    height: 1.625em;
+
+		    path { fill: white }
+	    }
+    }
+
+    .add-button-text {
+
+    	padding: 0 1em;
+	    height: 1.5em;
+	    line-height: 1.5;
+	    color: $primary;
+	    //font-size: 0.85em;
+	    display: inline-block;
+	    transition: color 0.2s;
+    }
+
+    &:hover {
+
+    	//background-color: $primary;
+
+    	.add-button-text { color: white }
+
+    	&:before {
+
+    		left: 0;
+    	}
+    }
+
+    &:before {
+
+    	content: "";
+	    width: 200%;
+	    height: 100%;
+	    display: inline-block;
+	    position: absolute;
+	    left: -200%;
+	    background: linear-gradient(to right, $primary 50%, white);
+	    transition: left 0.3s;
+	    z-index: -1;
+    }
+}
+
+.signin-button {
+
+	display: inline-block;
+	box-sizing: content-box;
+    height: 2em;
+    line-height: 1em;
+    border-radius: 1.2em;
+    border: 2px solid $secondary;
+	background-color: $secondary;
+	cursor: pointer;
+	position: relative;
+    overflow: hidden;
+
+    .signin-button-icon {
+
+    	height: 2em;
+    	padding: 0.15em 0.28em;
+	    margin-left: -1px;
+	    width: 2.25em;
+	    display: inline-block;
+	    border-radius: 1em;
+
+	    svg {
+
+		    height: 1.625em;
+
+		    path { fill: white }
+	    }
+    }
+
+    .signin-button-text {
+
+	    height: 1.5em;
+	    line-height: 1.5;
+	    color: white;
+	    display: inline-block;
+    	width: 0em;
+    	padding: 0;
+	    transition: width 0.3s, padding 0.3s;
+    }
+
+    &:hover .signin-button-text {
+
+    	padding: 0 1em;
+    	width: 12em;
+    }
+}
+
+.menu-symbol {
+
+	height: 80px;
+	width: 80px;
+	margin: auto;
+	border-radius: 40px;
+	background-color: transparent;
+	padding: 10px;
+
+	svg {
+		height: 60px;
+		width: 60px;
+		fill: $secondary;
+	}
+}
+
+.bio-content {
+
+	p { margin: 0.5em 0 }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media only screen and (max-width: 1150px) {
     
@@ -1105,23 +1271,6 @@ ul {
     	padding: 0;
     }
 
-    #header-links {
-
-    	position: static;
-    	right: unset;
-    	width: 100%;
-    	height: 3em;
-    	overflow: hidden;
-    	padding: 0.5em 0;
-
-    	.help-link {
-
-    		max-width: unset;
-		    width: 100%;
-		    text-align: center;
-    	}
-    }
-
     #img-logo {
 
     	margin: 0;
@@ -1145,7 +1294,7 @@ ul {
     	input[type="text"], .algolia-places {
 
     		margin: 0.5em auto;
-		    width: 80%;
+		    width: 60%;
     	}
 
     	input[type="text"], .algolia-places .ap-input {
@@ -1269,132 +1418,34 @@ ul {
     		justify-content: left;
     	}
     }
-}
 
-.empty-list-indicator {
+    #header-links {
 
-	margin: 2em;
-	text-align: center;
-	font-weight: bold;
-}
+    	position: static;
+    	right: unset;
+    	width: 90%;
+    	overflow: hidden;
+    	padding: 0.5em 0;
 
-.offer-list {
+    	.help-link {
 
-	margin: 0 -0.7em;
-}
-
-.add-button {
-
-	//display: inline-block;
-	box-sizing: content-box;
-    height: 2em;
-    line-height: 1em;
-    border-radius: 1.2em;
-    border: 2px solid $primary;
-	transition: background-color 0.2s;
-	cursor: pointer;
-	position: relative;
-    overflow: hidden;
-
-    .add-button-icon {
-
-    	height: 2em;
-    	padding: 0.15em 0.28em;
-	    margin-left: -1px;
-	    width: 2.25em;
-	    display: inline-block;
-	    border-radius: 1em;
-	    background-color: $primary;
-
-	    svg {
-
-		    height: 1.625em;
-
-		    path { fill: white }
-	    }
-    }
-
-    .add-button-text {
-
-    	padding: 0 1em;
-	    height: 1.5em;
-	    line-height: 1.5;
-	    color: $primary;
-	    //font-size: 0.85em;
-	    display: inline-block;
-	    transition: color 0.2s;
-    }
-
-    &:hover {
-
-    	//background-color: $primary;
-
-    	.add-button-text { color: white }
-
-    	&:before {
-
-    		left: 0;
+    		max-width: unset;
+		    width: 100%;
+		    text-align: center;
     	}
-    }
 
-    &:before {
+	    .signin-button, .add-button {
 
-    	content: "";
-	    width: 200%;
-	    height: 100%;
-	    display: inline-block;
-	    position: absolute;
-	    left: -200%;
-	    background: linear-gradient(to right, $primary 50%, white);
-	    transition: left 0.3s;
-	    z-index: -1;
-    }
-}
+	    	display: block;
+	    	width: 60%;
+	    	margin: auto;
 
-.signin-button {
+	    	.signin-button-text, .add-button-text {
 
-	display: inline-block;
-	box-sizing: content-box;
-    height: 2em;
-    line-height: 1em;
-    border-radius: 1.2em;
-    border: 2px solid $secondary;
-	background-color: $secondary;
-	cursor: pointer;
-	position: relative;
-    overflow: hidden;
-
-    .signin-button-icon {
-
-    	height: 2em;
-    	padding: 0.15em 0.28em;
-	    margin-left: -1px;
-	    width: 2.25em;
-	    display: inline-block;
-	    border-radius: 1em;
-
-	    svg {
-
-		    height: 1.625em;
-
-		    path { fill: white }
+	    		width: auto;
+	    	}
 	    }
-    }
 
-    .signin-button-text {
-
-	    height: 1.5em;
-	    line-height: 1.5;
-	    color: white;
-	    display: inline-block;
-    	width: 0em;
-    	padding: 0;
-	    transition: width 0.3s, padding 0.3s;
-    }
-
-    &:hover .signin-button-text {
-
-    	padding: 0 1em;
-    	width: 12em;
-    }
+	    > * + * { margin: 0.5em auto !important }
+	}
 }

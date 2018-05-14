@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Form, Input } from 'reactstrap';
 import { ListGroup, ListGroupItem, Badge, Tooltip, Collapse } from 'reactstrap';
 import codes from '../../Data/codes.json'
 
@@ -7,39 +6,7 @@ class Profile extends Component {
 
       state = {
             tooltipOpen: 0,
-            collapseContact: false,
-            collapseEdit: false
-      }
-
-      toggleEdit () {
-
-            this.setState({ collapseEdit: !this.state.collapseEdit });
-      }
-
-      confirmEdition () {
-
-            if (document.getElementById("email-form").value !== this.props.profile.email) {
-
-                  let box = document.getElementById("signedup-box");
-                  box.innerHTML = "Access denied.";
-                  box.classList.add("warning");
-                  box.classList.remove("hidden-box");
-            }
-            else {
-                  this.props.api.auth({
-                    username: document.getElementById("email-form").value,
-                    password: document.getElementById("password-form").value
-                  }, "signin", data => {
-
-                        this.props.onEditProfile(this.props.profile);
-                  }, err => {
-
-                        let box = document.getElementById("signedup-box");
-                        box.innerHTML = "Access denied.";
-                        box.classList.add("warning");
-                        box.classList.remove("hidden-box");
-                  });
-            }    
+            collapseContact: false
       }
 
       switchTooltip (num) {
@@ -74,30 +41,12 @@ class Profile extends Component {
       						<img className="avatar" src={this.props.profile.avatar} alt="avatar"/>
       					</div>
       					<div className="tri-box double-tri-box">
-                                          <button onClick={() => this.toggleEdit()} className="edit-button">
-                                                <svg version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 528.899 528.899"><g>
-                                                      <path d="M328.883,89.125l107.59,107.589l-272.34,272.34L56.604,361.465L328.883,89.125z M518.113,63.177l-47.981-47.981
-                                                            c-18.543-18.543-48.653-18.543-67.259,0l-45.961,45.961l107.59,107.59l53.611-53.611
-                                                            C532.495,100.753,532.495,77.559,518.113,63.177z M0.3,512.69c-1.958,8.812,5.998,16.708,14.811,14.565l119.891-29.069
-                                                            L27.473,390.597L0.3,512.69z"/></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g>
-                                                </svg>
-                                          </button>
       						<h2 className="full-name">{this.props.profile.fullname}</h2>
 			      			<div className="tag-list profile-tag-list">
 			      				{ this.props.profile.tags.map(tag => <span key={"tag-" + tag} className="tag" onClick={() => this.props.onSearch(tag)}>{tag}</span>) }
 			      			</div>
       					</div>
       				</div>
-                              <Collapse isOpen={this.state.collapseEdit}>
-                                    <div id="edit-box" className="content-box ext-box info">
-                                          <Form>
-                                                <Input type="text" name="email" id="email-form" placeholder="Email"/>
-                                                <Input type="password" name="password" id="password-form" placeholder="Mot de passe"/>
-                                                <button type="button" className="contact-button" onClick={() => this.confirmEdition()}>Editer</button>
-                                                <div id="signedup-box" className="ext-box hidden-box"></div>
-                                          </Form>
-                                    </div>
-                              </Collapse>
       				<div className="content-box contact-box">
                               {
                                     this.props.profile.publicEmail === undefined && this.props.profile.tel === undefined && this.props.profile.website === undefined && this.props.profile.company === undefined ?
@@ -230,7 +179,7 @@ class Profile extends Component {
                         this.props.profile.resume === "" || this.props.profile.resume === undefined ? <div/> :
                               <div className="profile-box content-box">
                                     <h2>Résumé</h2>
-                                    <p>{this.props.profile.resume}</p>
+                                    <div className="bio-content" dangerouslySetInnerHTML={{ __html: this.props.profile.resume}}/>
                               </div>
                         }
       			<div className="profile-box content-box">
