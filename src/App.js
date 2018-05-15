@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router'
 import { BrowserRouter } from 'react-router-dom'
 import MapPage from './Pages/MapPage'
 import './App.css'
+//import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 class App extends Component {
 
@@ -128,16 +129,25 @@ class App extends Component {
 
 		return (
 			<BrowserRouter>
-				<Switch>
-					<Route exact path="/:lat?/:lng?/:zoom?" component={vanillaMap.bind(this)}/>
-					<Route path="/signin/:lat?/:lng?/:zoom?" component={signinMap.bind(this)}/>
-					<Route path="/signup/:lat?/:lng?/:zoom?" component={signupMap.bind(this)}/>
-					<Route path="/list/:ids/:lat?/:lng?/:zoom?" component={listMap.bind(this)}/>
-					<Route path="/search/:tag/:lat?/:lng?/:zoom?" component={searchMap.bind(this)}/>
-					<Route path="/seek/:lat?/:lng?/:zoom?" component={seekMap.bind(this)}/>
-					<Route path="/profile/:id/:lat?/:lng?/:zoom?" component={profileMap.bind(this)}/> 
-					<Route path="/edit/:id/:lat?/:lng?/:zoom?" component={editMap.bind(this)}/> 
-				</Switch>
+				{/*<Route render={({location}) => (
+					<TransitionGroup>
+					<CSSTransition
+						timeout={1000}
+						key={location.key}
+						classNames="fade">*/}
+						<Switch /*location={location}*/>
+							<Route exact path="/:lat?/:lng?/:zoom?" component={vanillaMap.bind(this)}/>
+							<Route path="/signin/:lat?/:lng?/:zoom?" component={signinMap.bind(this)}/>
+							<Route path="/signup/:lat?/:lng?/:zoom?" component={signupMap.bind(this)}/>
+							<Route path="/list/:ids/:lat?/:lng?/:zoom?" component={listMap.bind(this)}/>
+							<Route path="/search/:tag/:lat?/:lng?/:zoom?" component={searchMap.bind(this)}/>
+							<Route path="/seek/:lat?/:lng?/:zoom?" component={seekMap.bind(this)}/>
+							<Route path="/profile/:id/:lat?/:lng?/:zoom?" component={profileMap.bind(this)}/> 
+							<Route path="/edit/:id/:lat?/:lng?/:zoom?" component={editMap.bind(this)}/> 
+						</Switch>
+					{/*</CSSTransition>
+				</TransitionGroup>
+				)}/>*/}
 			</BrowserRouter>
 		)
 	}

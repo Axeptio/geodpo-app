@@ -8,6 +8,7 @@ import ProfileMaker from './Components/ProfileMaker'
 import SigninMenu from './Components/SigninMenu'
 //import dpo from '../Data/dpo.json'
 import Profiles from './Components/Profiles';
+//import HelpLightbox from './Components/HelpLightbox';
 
 class MapPage extends Component {
 
@@ -266,7 +267,7 @@ class MapPage extends Component {
   render() {
     return (
       <div id="map-page">
-        {this.lightbox}
+        {this.state.lightbox}
       	<Navbar>
       		<NavbarBrand><img id="img-logo" src="/logo.png" alt="logo"/></NavbarBrand>
           <span className="handheld-extender" onClick={() => this.toggleExtendedNavbar()}>X
@@ -331,6 +332,7 @@ class MapPage extends Component {
             onProfileClick={profile => this.handleProfileClick(profile)}
             onClusterClick={profiles => this.handleClusterClick(profiles)}
           />
+          <div id="help-icon">?</div>
         </div>
       </div>
 

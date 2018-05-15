@@ -110,8 +110,9 @@ main {
 
 #header-links {
 
-	position: absolute;
+	//position: absolute;
 	right: 20px;
+    margin-left: 20px;
 
 	a, .header-link {
 		display: inline-block;
@@ -168,7 +169,11 @@ main {
 }
 
 #map-search-form {
-  display: inline-block;
+
+  display: flex;
+  flex: 1;
+
+  input[type="text"] { flex: 1 }
 }
 
 h1, h2, p {
@@ -201,6 +206,11 @@ h1, h2, p {
   z-index: 10;
 
   &.hidden { left: -100%; }
+}
+
+.leaflet-fade-anim .leaflet-tile, .leaflet-fade-anim .leaflet-popup {
+
+	opacity: 1 !important;
 }
 
 #profile-menu {
@@ -622,6 +632,7 @@ p {
 .ReactTags__suggestions ul {
 
 	list-style-type: none;
+	padding: 0;
   box-shadow: 0.05em 0.01em 0.5em rgba(0,0,0,.2);
   background: white;
   width: 100%;
@@ -1171,15 +1182,15 @@ p {
     .signin-button-icon {
 
     	height: 2em;
-    	padding: 0.15em 0.28em;
+    	padding: 0.2em 0.28em;
 	    margin-left: -1px;
-	    width: 2.25em;
+	    width: 2em;
 	    display: inline-block;
 	    border-radius: 1em;
 
 	    svg {
 
-		    height: 1.625em;
+		    height: 1.5em;
 
 		    path { fill: white }
 	    }
@@ -1222,6 +1233,117 @@ p {
 .bio-content {
 
 	p { margin: 0.5em 0 }
+}
+
+#help-icon {
+
+	cursor: pointer;
+	position: absolute;
+    right: 15px;
+    bottom: 70px;
+    z-index: 100;
+    width: 1.5em;
+    height: 1.5em;
+    line-height: 1.5em;
+    text-align: center;
+    border-radius: 1em;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: #606060;
+    background-color: #F5F5F5;
+	box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.5);
+	transition: all 0.3s;
+
+	&:hover {
+
+		background-color: $primary;
+		color: #F5F5F5;
+	}
+}
+
+.lightbox-container {
+
+	position: absolute;
+	background-color: #0008;
+	height: 100%;
+	width: 100%;
+	z-index: 1000;
+	padding: 6em 8em;
+
+	.lightbox {
+
+		position: relative;
+		width: 100%;
+		height: 100%;
+		border-radius: 20px;
+		overflow: hidden;
+		background-color: white;
+		box-shadow: 0 0 10px 2px #0008;
+
+		.lightbox-header {
+
+			height: 6em;
+
+			.lightbox-title {
+
+				line-height: 3em;
+				font-size: 2em;
+				margin-left: 24px;
+			}
+		}
+
+		.lightbox-footer {
+
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			height: 1em;
+		}
+
+		.lightbox-header, .lightbox-footer {
+
+			color: white;
+
+			background: linear-gradient(225deg, #96c02d, #81ddc2, #62b63b, #415fae);
+			background-size: 800% 800%;
+
+			-webkit-animation: ModernBG 60s ease infinite;
+			-moz-animation: ModernBG 60s ease infinite;
+			animation: ModernBG 60s ease infinite;
+		}
+
+		.lightbox-body {
+
+			padding: 18px;
+		}
+
+		.lightbox-next {
+
+			display: inline-block;
+			text-align: left;
+			font-size: 1.5em;
+			cursor: pointer;
+
+			background: linear-gradient(225deg, #81ddc2, #62b63b, #41ae83);
+			background-size: 800% 800%;
+
+			-webkit-background-clip: text;
+  			-webkit-text-fill-color: transparent;
+
+			&:hover {
+
+				animation: GoNext 0.7s ease-in-out infinite;
+				animation-direction: alternate;
+			}
+
+			&:before { content: "> " }
+
+			@keyframes GoNext { 
+			    0%{padding-left: 0}
+			    100%{padding-left: 1.5em}
+			}
+		}
+	}
 }
 
 
@@ -1301,12 +1423,14 @@ p {
 
     	display: flex;
     	flex-direction: column;
+    	flex: unset;
     	width: 90%;
 
     	input[type="text"], .algolia-places {
 
     		margin: 0.5em auto;
 		    width: 60%;
+		    flex: unset;
     	}
 
     	input[type="text"], .algolia-places .ap-input {
@@ -1439,6 +1563,7 @@ p {
     	width: 90%;
     	overflow: hidden;
     	padding: 0.5em 0;
+    	margin-left: 0;
 
     	.help-link {
 
@@ -1461,4 +1586,22 @@ p {
 
 	    > * + * { margin: 0.5em auto !important }
 	}
+}
+
+
+
+@-webkit-keyframes ModernBG {
+    0%{background-position:0% 62%}
+    50%{background-position:100% 39%}
+    100%{background-position:0% 62%}
+}
+@-moz-keyframes ModernBG {
+    0%{background-position:0% 62%}
+    50%{background-position:100% 39%}
+    100%{background-position:0% 62%}
+}
+@keyframes ModernBG { 
+    0%{background-position:0% 62%}
+    50%{background-position:100% 39%}
+    100%{background-position:0% 62%}
 }
