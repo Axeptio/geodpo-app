@@ -146,9 +146,9 @@ class MapPage extends Component {
       case "seek":
         {
         let bounds = this.refs.map.refs.map.leafletElement.getBounds();
-        let seek = this.props.profiles.filter(p => p.location.latlng.lat < bounds._northEast.lat && p.location.latlng.lat > bounds._southWest.lat
+        let search = this.props.profiles.filter(p => p.location.latlng.lat < bounds._northEast.lat && p.location.latlng.lat > bounds._southWest.lat
           && p.location.latlng.lng < bounds._northEast.lng && p.location.latlng.lng > bounds._southWest.lng)
-        if (seek.length > 0)
+        if (search.length > 0)
           p = <Profiles onProfileClick={this.handleProfileClick} api={this.props.options.api} data={search} onSearch={tag => this.handleSearch(tag)}/>
         else
           p = <Profiles  api={this.props.options.api} empty/>
