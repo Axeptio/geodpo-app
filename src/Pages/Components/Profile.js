@@ -69,7 +69,7 @@ class Profile extends Component {
                                                                   {this.props.profile.publicEmail}
                                                             </span>
                                                       </div> :
-                                                      <div/>
+                                                      <span/>
                                           }
                                           {
                                                 this.props.profile.tel !== undefined ?
@@ -91,7 +91,7 @@ class Profile extends Component {
                                                                   {this.props.profile.tel}
                                                             </span>
                                                       </div> :
-                                                      <div/>
+                                                      <span/>
                                           } 
                                           {
                                                 this.props.profile.website !== undefined ?
@@ -123,7 +123,7 @@ class Profile extends Component {
                                                                   <a href={this.props.profile.website} target="_blank">{this.props.profile.website}</a>
                                                             </span>
                                                       </div> :
-                                                      <div/>
+                                                      <span/>
                                           } 
                                           {
                                                 this.props.profile.company !== undefined ?
@@ -153,7 +153,7 @@ class Profile extends Component {
                                                                   {this.props.profile.company}
                                                             </span>
                                                       </div> :
-                                                      <div/>
+                                                      <span/>
                                           }
                                           </Collapse>
                                     </div>
