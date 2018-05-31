@@ -7,8 +7,8 @@ class HelpLightbox extends Component {
 
 		return(
 			<div className="lightbox-container">
-				<div className="lightbox-inner">
-					<div className="lightbox">
+				<div className="lightbox-inner" onClick={() => this.props.onClose()}>
+					<div className="lightbox" onClick={e => e.stopPropagation()}>
 						<div className="lightbox-body">
 							<div className="lightbox-section">
 								<p>
@@ -23,7 +23,7 @@ class HelpLightbox extends Component {
 								<a target="_blank" className="lightbox-link" href="https://www.cnil.fr/fr/rgpd-par-ou-commencer">Mais au fait, c'est quoi le RGPD ?</a>
 							</div>
 							<div className="lightbox-section">
-								<Button color="secondary" onClick={() => {this.props.onCreateProfile();}}>Je veux être référencé sur cette carte</Button>
+								<Button color="secondary" onClick={() => this.props.onCreateProfile()}>Je veux être référencé sur cette carte</Button>
 								<Button color="primary" onClick={() => this.props.onClose()}>Montrez-moi les DPO près de chez moi</Button>
 							</div>
 						</div>
