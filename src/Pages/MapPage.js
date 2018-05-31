@@ -8,7 +8,7 @@ import ProfileMaker from './Components/ProfileMaker'
 import SigninMenu from './Components/SigninMenu'
 //import dpo from '../Data/dpo.json'
 import Profiles from './Components/Profiles';
-//import HelpLightbox from './Components/HelpLightbox';
+import HelpLightbox from './Components/HelpLightbox';
 
 class MapPage extends Component {
 
@@ -17,7 +17,7 @@ class MapPage extends Component {
 
 	constructor (props) {
 
-		super(props)
+		super(props);
     this.validateSearch = this.validateSearch.bind(this);
     this.handleProfileClick = this.handleProfileClick.bind(this);
     this.handleEditProfile = this.handleEditProfile.bind(this);
@@ -72,7 +72,7 @@ class MapPage extends Component {
     this.state = {
       hidden: props.mode === "vanilla",
       profile: p,
-      lightbox: (<div/>)
+      lightbox: this.getCookie("lightbox") === undefined || this.getCookie("lightbox") === "yes"
     }
 	}
 
@@ -172,7 +172,7 @@ class MapPage extends Component {
     this.setState({
       hidden: props.mode === "vanilla",
       profile: p,
-      lightbox: (<div/>)
+      lightbox: this.getCookie("lightbox") === undefined
     });
   }
 
@@ -199,6 +199,25 @@ class MapPage extends Component {
         return;
       }
     })
+  }
+
+  setCookie(c_name, value, exdays) {
+    var exdate = new Date();
+    exdate.setDate(exdate.getDate() + exdays);
+    var c_value = escape(value) + ((exdays == null) ? "" : "; expires=" + exdate.toUTCString());
+    document.cookie = c_name + "=" + c_value;
+  }
+
+  getCookie(c_name) {
+    var i, x, y, ARRcookies = document.cookie.split(";");
+    for (i = 0; i < ARRcookies.length; i++) {
+        x = ARRcookies[i].substr(0, ARRcookies[i].indexOf("="));
+        y = ARRcookies[i].substr(ARRcookies[i].indexOf("=") + 1);
+        x = x.replace(/^\s+|\s+$/g, "");
+        if (x == c_name) {
+            return unescape(y);
+        }
+    }
   }
 
   handleEditProfile(profile) {
@@ -264,10 +283,22 @@ class MapPage extends Component {
     document.getElementsByClassName("navbar")[0].classList.toggle("extended-navbar");
   }
 
+  showLightbox () {
+
+    this.setCookie("lightbox", "yes", -1);
+    this.setState({lightbox: true});
+  }
+
+  handleCloseLightbox () {
+
+    this.setCookie("lightbox", "no", 365);
+    this.setState({lightbox: false});
+  }
+
   render() {
     return (
       <div id="map-page">
-        {this.state.lightbox}
+        { this.state.lightbox ? <HelpLightbox onCreateProfile={() => {this.handleCloseLightbox(); this.handleCreateProfile();}} onClose={() => this.handleCloseLightbox()}/> : <div/> }
       	<Navbar>
       		<NavbarBrand><img id="img-logo" src="/logo.png" alt="logo"/></NavbarBrand>
           <span className="handheld-extender" onClick={() => this.toggleExtendedNavbar()}>X
@@ -332,7 +363,7 @@ class MapPage extends Component {
             onProfileClick={profile => this.handleProfileClick(profile)}
             onClusterClick={profiles => this.handleClusterClick(profiles)}
           />
-          <div id="help-icon">?</div>
+          <div onClick={() => this.showLightbox()} id="help-icon">?</div>
         </div>
       </div>
 

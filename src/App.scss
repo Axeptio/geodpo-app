@@ -861,16 +861,6 @@ p {
 
 	height: 100%;
 	width: 100%;
-	background-color: #0008;
-}
-
-.lightbox {
-
-	margin: auto;
-	width: 30em;
-	max-width: 90%;
-	height: 10em;
-	background-color: white;
 }
 
 .delete-bullet {
@@ -1265,84 +1255,91 @@ p {
 
 .lightbox-container {
 
+	display: table;
 	position: absolute;
-	background-color: #0008;
 	height: 100%;
 	width: 100%;
 	z-index: 1000;
-	padding: 6em 8em;
 
-	.lightbox {
+	.lightbox-inner {
 
-		position: relative;
-		width: 100%;
-		height: 100%;
-		border-radius: 20px;
-		overflow: hidden;
-		background-color: white;
-		box-shadow: 0 0 10px 2px #0008;
+		display: table-cell;
+		vertical-align: middle;
 
-		.lightbox-header {
+		.lightbox {
 
-			height: 6em;
-
-			.lightbox-title {
-
-				line-height: 3em;
-				font-size: 2em;
-				margin-left: 24px;
-			}
-		}
-
-		.lightbox-footer {
-
-			position: absolute;
-			bottom: 0;
-			width: 100%;
-			height: 1em;
-		}
-
-		.lightbox-header, .lightbox-footer {
-
-			color: white;
-
-			background: linear-gradient(225deg, #96c02d, #81ddc2, #62b63b, #415fae);
-			background-size: 800% 800%;
-
-			-webkit-animation: ModernBG 60s ease infinite;
-			-moz-animation: ModernBG 60s ease infinite;
-			animation: ModernBG 60s ease infinite;
-		}
-
-		.lightbox-body {
-
-			padding: 18px;
-		}
-
-		.lightbox-next {
-
-			display: inline-block;
+			position: relative;
+			background-color: white;
+			max-width: 80em;
+			width: 60%;
+			margin: auto;
+			color: $secondary;
+			box-shadow: 0px 0px 16px 0px rgba(100, 100, 100, 0.35);
 			text-align: left;
-			font-size: 1.5em;
-			cursor: pointer;
 
-			background: linear-gradient(225deg, #81ddc2, #62b63b, #41ae83);
-			background-size: 800% 800%;
+			.lightbox-header {
 
-			-webkit-background-clip: text;
-  			-webkit-text-fill-color: transparent;
+				height: 6em;
 
-			&:hover {
+				.lightbox-title {
 
-				animation: GoNext 0.7s ease-in-out infinite;
-				animation-direction: alternate;
+					line-height: 3em;
+					font-size: 2em;
+					margin-left: 24px;
+				}
 			}
 
-			&:before { content: "> " }
+			.lightbox-footer {
 
-			@keyframes GoNext { 
-			    0%{padding-left: 0}
-			    100%{padding-left: 1.5em}
+				width: 100%;
+				background-color: #f1f1f7;
+				padding: 1em 2em;
+
+				.footer-box {
+
+					display: inline-block;
+					vertical-align: middle;
+					font-size: 0.8em;
+
+					&.big { width: 60%}
+					&.little {
+						width: 40%;
+						text-align: center;
+					}
+					p { text-align: left }
+				}
+			}
+
+			.lightbox-body {
+
+				padding: 18px;
+
+				p {
+					text-align: left;
+				    margin: 1.5em;
+				}
+
+				.lightbox-section {
+
+					padding: 1em;
+					text-align: center;
+
+					.btn {
+						margin: 1em;
+						border-radius: 1px;
+					}
+				}
+			}
+
+			.lightbox-link {
+
+			    font-weight: bold;
+			    color: inherit;
+			    display: block;
+			    text-align: center;
+			    margin: 0.5em;
+
+				&:hover { text-decoration: underline; }
 			}
 		}
 	}

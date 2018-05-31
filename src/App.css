@@ -7253,7 +7253,9 @@ h2 {
 .badge {
   background-color: #c3e129;
   margin: 0.7em;
-  font-size: 1em; }
+  font-size: 1em;
+  padding: 0.32em 0.4em;
+  text-shadow: 1px 1px 2px rgba(150, 150, 150, 0.5); }
 
 .image-upload {
   width: 100%;
@@ -7308,15 +7310,7 @@ h2 {
 
 .lightbox-container {
   height: 100%;
-  width: 100%;
-  background-color: #0008; }
-
-.lightbox {
-  margin: auto;
-  width: 30em;
-  max-width: 90%;
-  height: 10em;
-  background-color: white; }
+  width: 100%; }
 
 .delete-bullet {
   float: right;
@@ -7606,59 +7600,64 @@ h2 {
     color: #F5F5F5; }
 
 .lightbox-container {
+  display: table;
   position: absolute;
-  background-color: #0008;
   height: 100%;
   width: 100%;
-  z-index: 1000;
-  padding: 6em 8em; }
-  .lightbox-container .lightbox {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-    overflow: hidden;
-    background-color: white;
-    box-shadow: 0 0 10px 2px #0008; }
-    .lightbox-container .lightbox .lightbox-header {
-      height: 6em; }
-      .lightbox-container .lightbox .lightbox-header .lightbox-title {
-        line-height: 3em;
-        font-size: 2em;
-        margin-left: 24px; }
-    .lightbox-container .lightbox .lightbox-footer {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      height: 1em; }
-    .lightbox-container .lightbox .lightbox-header, .lightbox-container .lightbox .lightbox-footer {
-      color: white;
-      background: linear-gradient(225deg, #96c02d, #81ddc2, #62b63b, #415fae);
-      background-size: 800% 800%;
-      -webkit-animation: ModernBG 60s ease infinite;
-      -moz-animation: ModernBG 60s ease infinite;
-      animation: ModernBG 60s ease infinite; }
-    .lightbox-container .lightbox .lightbox-body {
-      padding: 18px; }
-    .lightbox-container .lightbox .lightbox-next {
-      display: inline-block;
-      text-align: left;
-      font-size: 1.5em;
-      cursor: pointer;
-      background: linear-gradient(225deg, #81ddc2, #62b63b, #41ae83);
-      background-size: 800% 800%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent; }
-      .lightbox-container .lightbox .lightbox-next:hover {
-        animation: GoNext 0.7s ease-in-out infinite;
-        animation-direction: alternate; }
-      .lightbox-container .lightbox .lightbox-next:before {
-        content: "> "; }
-@keyframes GoNext {
-  0% {
-    padding-left: 0; }
-  100% {
-    padding-left: 1.5em; } }
+  z-index: 1000; }
+  .lightbox-container .lightbox-inner {
+    display: table-cell;
+    vertical-align: middle; }
+    .lightbox-container .lightbox-inner .lightbox {
+      position: relative;
+      background-color: white;
+      max-width: 80em;
+      width: 60%;
+      margin: auto;
+      color: #34527b;
+      box-shadow: 0px 0px 16px 0px rgba(100, 100, 100, 0.35);
+      text-align: left; }
+      .lightbox-container .lightbox-inner .lightbox .lightbox-header {
+        height: 6em; }
+        .lightbox-container .lightbox-inner .lightbox .lightbox-header .lightbox-title {
+          line-height: 3em;
+          font-size: 2em;
+          margin-left: 24px; }
+      .lightbox-container .lightbox-inner .lightbox .lightbox-footer {
+        width: 100%;
+        background-color: #f1f1f7;
+        padding: 1em 2em; }
+        .lightbox-container .lightbox-inner .lightbox .lightbox-footer .footer-box {
+          display: inline-block;
+          vertical-align: middle;
+          font-size: 0.8em; }
+          .lightbox-container .lightbox-inner .lightbox .lightbox-footer .footer-box.big {
+            width: 60%; }
+          .lightbox-container .lightbox-inner .lightbox .lightbox-footer .footer-box.little {
+            width: 40%;
+            text-align: center; }
+          .lightbox-container .lightbox-inner .lightbox .lightbox-footer .footer-box p {
+            text-align: left; }
+      .lightbox-container .lightbox-inner .lightbox .lightbox-body {
+        padding: 18px; }
+        .lightbox-container .lightbox-inner .lightbox .lightbox-body p {
+          text-align: left;
+          margin: 1.5em; }
+        .lightbox-container .lightbox-inner .lightbox .lightbox-body .lightbox-section {
+          padding: 1em;
+          text-align: center; }
+          .lightbox-container .lightbox-inner .lightbox .lightbox-body .lightbox-section .btn {
+            margin: 1em;
+            border-radius: 1px; }
+      .lightbox-container .lightbox-inner .lightbox .lightbox-link {
+        font-weight: bold;
+        color: inherit;
+        display: block;
+        text-align: center;
+        margin: 0.5em; }
+        .lightbox-container .lightbox-inner .lightbox .lightbox-link:hover {
+          text-decoration: underline; }
+
 @media only screen and (max-width: 1150px) {
   .navbar {
     justify-content: space-around;
