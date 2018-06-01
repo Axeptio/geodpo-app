@@ -251,6 +251,7 @@ h1, h2, p {
 	text-align: center;
 	vertical-align: top;
 	position: relative;
+	overflow: hidden;
 
   .avatar {
   	
@@ -1366,7 +1367,11 @@ p {
 
 
 
+@media only screen and (min-width: 1151px) { .handled { display: none } }
+
 @media only screen and (max-width: 1150px) {
+
+	.non-handled { display: none }
     
     .navbar {
 
@@ -1584,6 +1589,34 @@ p {
 	    }
 
 	    > * + * { margin: 0.5em auto !important }
+	}
+
+	.lightbox {
+
+		width: 80% !important;
+		margin: 2em auto !important;
+
+		.lightbox-body {
+
+			padding: 0 !important;
+
+			p { margin: 0.5em !important }
+
+			.lightbox-section {
+
+				.btn {
+
+					margin: 0.5em 0 !important;
+					width: 100%;
+					text-align: center;
+				}
+			}
+		}
+
+		.lightbox-footer {
+
+			text-align: center;
+		}
 	}
 }
 
