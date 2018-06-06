@@ -192,7 +192,7 @@ class ProfileMaker extends Component {
         box.classList.remove("hidden-box");
         box.classList.remove("warning");
         var name = document.getElementById("fullname-form").value;
-        window.$crisp.push(["do", "message:send", ["text", `${name} vient de créer son profil sur la carte des DPO. En attente de validation.`]]);
+        window.$crisp.push(["do", "message:send", ["text", `${name} a créé son profil.`]]);
         setTimeout(this.props.onCreateProfile, 4000);
       }
 
