@@ -180,6 +180,7 @@ class EditProfile extends Component {
         box.classList.add("success");
         box.classList.remove("hidden-box");
         box.classList.remove("warning");
+        var name = document.getElementById("fullname-form").value;
         window.$crisp.push(["do", "message:send", ["text", `${name} a édité son profil.`]]);
         setTimeout(this.props.onCreateProfile, 4000);
       }
