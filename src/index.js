@@ -10,7 +10,7 @@ import { hotjar } from 'react-hotjar';
 
 hotjar.initialize(process.env.REACT_APP_HOTJAR_ID, process.env.REACT_APP_HOTJAR_VERSION);
 
-const api = new Api({ baseURL: process.env.REACT_APP_GEODPO_API_URL/*"http://localhost:3006/"*//*"https://api.geodpo.eu/"*/ });
+const api = new Api({ baseURL: /*process.env.REACT_APP_GEODPO_API_URL*//*"http://localhost:3006/"*/"https://api.geodpo.eu/" });
 
 const options = { api }
 

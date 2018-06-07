@@ -72,6 +72,26 @@ main {
 	padding: 2em;
 }
 
+.upload-box-info {
+
+	background-color: #f2f4f7;
+    width: 40px;
+    height: 25px;
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - 20px);
+    border-radius: 1px;
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
+    text-align: center !important;
+
+    svg {
+
+    	height: 100%;
+	    fill: #a3a3a3;
+	    margin: auto;
+    }
+}
+
 .confirm-box {
 
 	text-align: center !important;
@@ -794,6 +814,7 @@ p {
 
 	width: 100%;
 	text-align: center;
+	position: relative;
 
 	input { display: none }
 
