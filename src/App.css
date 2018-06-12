@@ -6860,7 +6860,7 @@ h1, h2, p {
   text-align: center; }
 
 .leaflet-container {
-  height: 100vh;
+  height: calc(100vh - 4.8em);
   width: 100%;
   margin: 0 auto; }
 
@@ -6946,6 +6946,9 @@ h1, h2, p {
 
 .content-box {
   margin-top: 2px; }
+
+.axeptio-checkbox {
+  margin-bottom: 2em; }
 
 .profile-box {
   box-sizing: border-box;
@@ -7599,7 +7602,7 @@ h2 {
   cursor: pointer;
   position: absolute;
   right: 15px;
-  bottom: 70px;
+  bottom: 85px;
   z-index: 100;
   width: 1.5em;
   height: 1.5em;
@@ -7655,6 +7658,11 @@ h2 {
             text-align: center; }
           .lightbox-container .lightbox-inner .lightbox .lightbox-footer .footer-box p {
             text-align: left; }
+        .lightbox-container .lightbox-inner .lightbox .lightbox-footer .legal-section {
+          text-align: center;
+          margin-top: 10px; }
+          .lightbox-container .lightbox-inner .lightbox .lightbox-footer .legal-section a {
+            color: #888; }
       .lightbox-container .lightbox-inner .lightbox .lightbox-body {
         padding: 18px; }
         .lightbox-container .lightbox-inner .lightbox .lightbox-body p {
@@ -7687,7 +7695,8 @@ h2 {
     padding: 0;
     padding-top: 0.5em;
     height: unset;
-    max-height: 3.5em;
+    min-height: 4em;
+    max-height: 4em;
     overflow: hidden;
     transition: max-height 0.5s; }
     .navbar.extended-navbar {

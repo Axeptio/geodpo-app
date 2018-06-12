@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Label, Input, FormText } from 'reactstrap';
+import { Form, Label, Input, FormText, Button } from 'reactstrap';
 import Place from 'react-algolia-places';
 import codes from '../../Data/codes.json';
 import suggestions from '../../Data/tag-suggestions.json';
@@ -7,6 +7,7 @@ import Select from 'react-select';
 import { WithContext as ReactTags } from 'react-tag-input';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import CKEditor from "react-ckeditor-component";
+import Axeptio, { AxeptioCheckbox } from '../../Axeptio/Axeptio';
 
 class ProfileMaker extends Component {
 
@@ -14,6 +15,10 @@ class ProfileMaker extends Component {
       areaList = [];
       tags = [];
       signedup = false;
+      state = {
+        accept: false,
+        token: null
+      };
 
       constructor (props) {
 
@@ -153,7 +158,8 @@ class ProfileMaker extends Component {
                   publicEmail: document.getElementById("public-email-form").value === "" ? undefined : document.getElementById("public-email-form").value,
                   tel: document.getElementById("tel-form").value === "" ? undefined : document.getElementById("tel-form").value,
                   website: website === "" ? undefined : ((website.startsWith("http://") || website.startsWith("https://") ? "" : "http://") + website),
-                  company: document.getElementById("company-form").value === "" ? undefined : document.getElementById("company-form").value
+                  company: document.getElementById("company-form").value === "" ? undefined : document.getElementById("company-form").value,
+                  axeptioToken: this.state.token
                 }, () => this.hasCreatedProfile(), data => {
 
                   this.profileWarning("Vous avez été déconnecté.");
@@ -322,7 +328,10 @@ class ProfileMaker extends Component {
                                 <FormText>Ces informations seront nécessaires pour modifier votre profil.</FormText>
                             </div>
                             <div className="content-box contact-box">
-                              <button type="submit" className="contact-button">Confirmer l'inscription</button>
+                              <Axeptio clientId="5b1a2dd8f789aa488047b85f" onToken={ token => this.setState({ token }) }>
+                                <AxeptioCheckbox onChange={checked => { this.setState({accept: checked}); }} name="lacartedesdpocgu" data='{"lang":"FR","id":"lacartedesdpocgu","type":"doc"}'/>
+                              </Axeptio>
+                              <Button type="submit" className="contact-button" disabled={ !this.state.accept }>Confirmer l'inscription</Button>
                               <div id="signedup-box" className="ext-box hidden-box"></div>
                             </div>
                         </div>

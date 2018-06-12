@@ -124,8 +124,8 @@ class Map extends Component {
     return (
       <LMap ref="map" onClick={this.props.onClick} center={[this.state.lat, this.state.lng]} zoom={this.state.zoom} onMoveend={this.updateState.bind(this)} onZoomend={this.updateState.bind(this)} zoomControl={false}>
         <TileLayer
-          attribution="Tiles &copy; Esri"
-          url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}"
+          attribution='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, Tiles &copy; Esri'
+          url='https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}'
         />
         <MarkerClusterGroup onClusterClick={this.displayCluster.bind(this)}>
           { this.state.profiles.map((e, i) => <Person id={"char-" + i} 

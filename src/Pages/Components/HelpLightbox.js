@@ -38,20 +38,24 @@ class HelpLightbox extends Component {
 							</div>
 						</div>
 						<div className="non-handled lightbox-footer">
-							<div className="big footer-box">
-								<p>
-									<b>Qui sommes-nous ?</b><br/>
-									Axeptio est une société Montpelliéraine qui propose aux sociétés de garantir l'authenticité et la traçabilité des consentements
-									dans le cadre du nouveau RGPD.
-								</p>
+							<div>
+								<div className="big footer-box">
+									<p>
+										<b>Qui sommes-nous ?</b><br/>
+										Axeptio est une société Montpelliéraine qui propose aux sociétés de garantir l'authenticité et la traçabilité des consentements
+										dans le cadre du nouveau RGPD.
+									</p>
+								</div>
+								<div className="little footer-box">
+									<a target="_blank" href="https://www.axeptio.eu"><Button outline color="secondary">Découvrir Axeptio</Button></a>
+								</div>
 							</div>
-							<div className="little footer-box">
-								<a target="_blank" href="https://www.axeptio.eu"><Button outline color="secondary">Découvrir Axeptio</Button></a>
-							</div>
+							<div className="legal-section"><a target="_blank" href="/mentions-legales.pdf">Mentions légales</a></div>
 						</div>
 						<div className="handled lightbox-footer">
 							<h6><b>Qui sommes-nous ?</b></h6>
 							<a target="_blank" href="https://www.axeptio.eu"><Button outline color="secondary">Découvrir Axeptio</Button></a>
+							<div className="legal-section"><a target="_blank" href="/mentions-legales.pdf">Mentions légales</a></div>
 						</div>
 					</div>
 				</div>

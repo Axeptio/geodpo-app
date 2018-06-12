@@ -201,7 +201,7 @@ h1, h2, p {
 }
 
 .leaflet-container {
-  height: 100vh;
+  height: calc(100vh - 4.8em);
   width: 100%;
   margin: 0 auto;
 }
@@ -320,6 +320,11 @@ h1, h2, p {
 .content-box {
 
   margin-top: 2px;
+}
+
+.axeptio-checkbox {
+
+	margin-bottom: 2em;
 }
 
 .profile-box {
@@ -1254,7 +1259,7 @@ p {
 	cursor: pointer;
 	position: absolute;
     right: 15px;
-    bottom: 70px;
+    bottom: 85px;
     z-index: 100;
     width: 1.5em;
     height: 1.5em;
@@ -1330,6 +1335,14 @@ p {
 					}
 					p { text-align: left }
 				}
+
+				.legal-section {
+
+					text-align: center;
+					margin-top: 10px;
+
+					a { color: #888 }
+				}
 			}
 
 			.lightbox-body {
@@ -1400,7 +1413,8 @@ p {
     	padding: 0;
     	padding-top: 0.5em;
     	height: unset;
-    	max-height: 3.5em;
+    	min-height: 4em;
+    	max-height: 4em;
     	overflow: hidden;
     	transition: max-height 0.5s;
 
