@@ -55,8 +55,10 @@ export default class Axeptio extends Component {
   componentDidMount() {
     if (this.initialized || document.getElementById("axeptio-script")) {
 
-      window.axeptio.clear();
-      window.axeptio.init();
+      if (window.axeptio !== undefined) {
+        window.axeptio.clear();
+        window.axeptio.init();
+      }
       return;
     }
 
