@@ -306,7 +306,7 @@ class MapPage extends Component {
             <g><g id="expand-more"><polygon points="270.3,58.65 153,175.95 35.7,58.65 0,94.35 153,247.35 306,94.35            "/></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g>
             </svg>
           </span>
-      		<form id="map-search-form" action="javascript:()=>{};" onSubmit={this.validateSearch}>
+      		<form id="map-search-form" onSubmit={e => {e.preventDefault(); this.validateSearch();} }>
       			<input id="industry-search-form" className="header-input" type="text" placeholder="Mots-clefs" name="tag"/>
       			<input className="header-input" type="submit" name="confirm" value="Ok"/>
       		</form>
