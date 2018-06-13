@@ -213,7 +213,7 @@ class ProfileMaker extends Component {
       render() {
 
             return (
-                  <Form action="javascript:()=>{};" onSubmit={() => this.confirmInscription()}>
+                  <Form onSubmit={e => {e.preventDefault();this.confirmInscription();}}>
                         <div id="profile-maker" className="profile-box">
                               <div className="content-box">
                                     <div className="tri-box">

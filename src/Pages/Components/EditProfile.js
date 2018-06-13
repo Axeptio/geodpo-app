@@ -222,7 +222,7 @@ class EditProfile extends Component {
       render() {
 
             return (
-                  <Form action="javascript:()=>{};" onSubmit={() => this.eraseProfile()}>
+                  <Form onSubmit={e => {e.preventDefault();this.eraseProfile();}}>
                         <div className="profile-box">
                               <div className="content-box">
                                     <div className="tri-box">
