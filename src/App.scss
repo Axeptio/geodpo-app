@@ -235,8 +235,7 @@ h1, h2, p {
 
 #profile-menu {
 	
-	overflow: scroll;
-  padding-bottom: 6em;
+  overflow: scroll;
   height: 100%;
   width: 100%;
   background-color: $profile-bg;
@@ -247,6 +246,11 @@ h1, h2, p {
 	
 		display: none;
 	}
+
+  form {
+
+  	margin-bottom: 6em;
+  }
 }
 
 .short-profiles-container {
@@ -1409,6 +1413,7 @@ p {
     
     .navbar {
 
+    	flex-wrap: nowrap !important;
     	justify-content: space-around;
     	padding: 0;
     	padding-top: 0.5em;

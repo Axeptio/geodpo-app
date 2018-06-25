@@ -54,11 +54,7 @@ export default class Axeptio extends Component {
 
   componentDidMount() {
     if (this.initialized || document.getElementById("axeptio-script")) {
-
-      if (window.axeptio !== undefined) {
-        window.axeptio.clear();
-        window.axeptio.init();
-      }
+     
       return;
     }
 
@@ -68,7 +64,7 @@ export default class Axeptio extends Component {
       token: this.props.token || null,
       onToken: this.props.onToken || new Function(),
       onChange: this.onChange(window.axeptioSettings.onChange).bind(this),
-      initAtLoad: this.props.initAtLoad || true,
+      initAtLoad: this.props.initAtLoad || false,
       globalPrototypeName: this.props.globalPrototypeName || "Axeptio",
       globalInstanceName: this.props.globalInstanceName || "Axeptio",
       debug: this.props.debug || false,

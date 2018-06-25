@@ -92,7 +92,7 @@ class ProfileMaker extends Component {
         }
 
         function validateUrl(url) {
-            var re = /[-a-zA-Z0-9@:%_+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_+.~#?&//=]*)?/gi;
+            var re = /[-a-zA-Z0-9@:%_+.~#?&//=]{2,256}\.[a-z]{1,20}\b(\/[-a-zA-Z0-9@:%_+.~#?&//=]*)?/gi;
             return re.test(String(url).toLowerCase());
         }
         
