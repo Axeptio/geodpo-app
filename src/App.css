@@ -6888,7 +6888,6 @@ h1, h2, p {
 
 #profile-menu {
   overflow: scroll;
-  padding-bottom: 6em;
   height: 100%;
   width: 100%;
   background-color: #f2f4f7;
@@ -6896,6 +6895,8 @@ h1, h2, p {
   box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.2); }
   #profile-menu::-webkit-scrollbar {
     display: none; }
+  #profile-menu form {
+    margin-bottom: 6em; }
 
 .short-profiles-container {
   padding: 1em; }
@@ -7691,6 +7692,7 @@ h2 {
     display: none; }
 
   .navbar {
+    flex-wrap: nowrap !important;
     justify-content: space-around;
     padding: 0;
     padding-top: 0.5em;
