@@ -31,7 +31,7 @@ export class AxeptioCheckbox extends Component {
         <input
           type="checkbox"
           name={this.props.name}
-          data-axeptio={this.props.data}
+          data-axeptio={this.props.data || `{"lang":${this.props.lang || "FR"},"id":${this.props["id-axeptio"]},"type":${this.props.type || 'doc'}}`}
         />
       </div>
     );

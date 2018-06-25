@@ -6750,6 +6750,7 @@ body {
   height: 100vh; }
 
 .navbar {
+  flex-wrap: nowrap !important;
   height: 4em;
   background-color: white;
   justify-content: left;
@@ -7692,7 +7693,7 @@ h2 {
     display: none; }
 
   .navbar {
-    flex-wrap: nowrap !important;
+    flex-wrap: wrap !important;
     justify-content: space-around;
     padding: 0;
     padding-top: 0.5em;
