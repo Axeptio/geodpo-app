@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Script from 'react-load-script';
 
 export class AxeptioCheckbox extends Component {
   constructor(props) {
@@ -20,7 +21,7 @@ export class AxeptioCheckbox extends Component {
   onChange(former) {
     return (name, checked, input) => {
       (former || new Function())(name, checked, input);
-      if (name === this.props.name)
+      if (name === this.props.identifier)
         (this.props.onChange || new Function())(checked, input);
     };
   }
@@ -30,8 +31,8 @@ export class AxeptioCheckbox extends Component {
       <div className="axeptio-checkbox">
         <input
           type="checkbox"
-          name={this.props.name}
-          data-axeptio={this.props.data || `{"lang":${this.props.lang || "FR"},"id":${this.props["id-axeptio"]},"type":${this.props.type || 'doc'}}`}
+          name={this.props.identifier}
+          data-axeptio={`{"lang":"${this.props.lang || "EN"}","id":"${this.props.identifier}","type":"${this.props.type || 'doc'}"}`}
         />
       </div>
     );
@@ -39,11 +40,6 @@ export class AxeptioCheckbox extends Component {
 }
 
 export default class Axeptio extends Component {
-  constructor(props) {
-    super(props);
-
-    this.initialized = false;
-  }
 
   onChange(former) {
     return (name, checked, input) => {
@@ -53,10 +49,7 @@ export default class Axeptio extends Component {
   }
 
   componentDidMount() {
-    if (this.initialized || document.getElementById("axeptio-script")) {
-     
-      return;
-    }
+    if (this.initialized) return;
 
     window.axeptioSettings = window.axeptioSettings || {};
     window.axeptioSettings = {
@@ -64,7 +57,7 @@ export default class Axeptio extends Component {
       token: this.props.token || null,
       onToken: this.props.onToken || new Function(),
       onChange: this.onChange(window.axeptioSettings.onChange).bind(this),
-      initAtLoad: this.props.initAtLoad || false,
+      initAtLoad: this.props.initAtLoad || true,
       globalPrototypeName: this.props.globalPrototypeName || "Axeptio",
       globalInstanceName: this.props.globalInstanceName || "Axeptio",
       debug: this.props.debug || false,
@@ -73,16 +66,15 @@ export default class Axeptio extends Component {
         this.props.axeptioPlatformUrl || "https://platform.axept.io"
     };
 
-    const script = document.createElement("script");
-    script.setAttribute("id", "axeptio-script");
-
-    script.src = "https://platform.axept.io/embed.js";
     this.initialized = true;
-
-    document.body.appendChild(script);
   }
 
   render() {
-    return <div className="axeptio">{this.props.children}</div>;
+    return (
+      <div className="axeptio">
+        <Script url="https://platform.axept.io/embed.js"/>
+        {this.props.children}
+      </div>
+    );
   }
 }

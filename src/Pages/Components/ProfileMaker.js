@@ -328,9 +328,8 @@ class ProfileMaker extends Component {
                                 <FormText>Ces informations seront nécessaires pour modifier votre profil.</FormText>
                             </div>
                             <div className="content-box contact-box">
-                              <Axeptio clientId="5b1a2dd8f789aa488047b85f" onToken={ token => this.setState({ token }) }>
-                                <AxeptioCheckbox onChange={checked => { this.setState({accept: checked}); }} name="lacartedesdpocgu" data='{"lang":"FR","id":"lacartedesdpocgu","type":"doc"}'/>
-                              </Axeptio>
+                              <Axeptio clientId="5b1a2dd8f789aa488047b85f" onToken={ token => this.setState({ token }) }/>
+                              <AxeptioCheckbox onChange={checked => { this.setState({accept: checked}); }} identifier="lacartedesdpocgu" lang="FR" type="doc"/>
                               <Button type="submit" className="contact-button" disabled={ !this.state.accept }>Confirmer l'inscription</Button>
                               <div id="signedup-box" className="ext-box hidden-box"></div>
                             </div>
