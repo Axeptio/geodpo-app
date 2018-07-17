@@ -172,6 +172,7 @@ class ProfileMaker extends Component {
               else
                 this.props.api.uploadFile(document.getElementById("avatar-form").files[0], data => validateProfile(this.props.api.baseURL + "/assets/" + data[0]._id), data => {
 
+                  validateProfile("/placeholder");
                   this.profileWarning("Le téléchargement de votre image de profil a échoué.");
                 })
             }, data => {
